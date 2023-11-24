@@ -1,3 +1,14 @@
+<?php
+include '../../config.php';
+session_start();
+
+ 
+if (!isset($_SESSION['username'])) {
+    header("Location: index.php");
+    exit(); // Terminate script execution after the redirect
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -35,7 +46,7 @@
                       <span class="count bg-success"></span>
                     </div>
                     <div class="profile-name">
-                      <h5 class="mb-0 font-weight-normal">Daffa Nur Fiat</h5>
+                      <h5 class="mb-0 font-weight-normal"><?php echo $_SESSION['username']; ?></h5>
                       <span>Manager</span>
                     </div>
                   </div>
@@ -240,7 +251,7 @@
                 <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
                   <div class="navbar-profile">
                     <img class="img-xs rounded-circle" src="../../assets/images/faces/face15.jpg" alt="">
-                    <p class="mb-0 d-none d-sm-block navbar-profile-name">Henry Klein</p>
+                    <p class="mb-0 d-none d-sm-block navbar-profile-name"><?php echo $_SESSION['username']; ?></p>
                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                   </div>
                 </a>

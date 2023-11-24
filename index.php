@@ -8,6 +8,7 @@ if (!isset($_SESSION['username'])) {
     exit(); // Terminate script execution after the redirect
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -82,7 +83,7 @@ if (!isset($_SESSION['username'])) {
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="../../pages/staff/staff.php">
+            <a class="nav-link" href="pages/staff/staff.php">
               <span class="menu-icon">
                 <i class="mdi mdi-speedometer"></i>
               </span>
@@ -90,7 +91,7 @@ if (!isset($_SESSION['username'])) {
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="../../pages/delivery/delivery.php">
+            <a class="nav-link" href="pages/delivery/delivery.php">
               <span class="menu-icon">
                 <i class="mdi mdi-speedometer"></i>
               </span>
@@ -98,7 +99,7 @@ if (!isset($_SESSION['username'])) {
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="../../pages/report/report.php">
+            <a class="nav-link" href="pages/report/report.php">
               <span class="menu-icon">
                 <i class="mdi mdi-speedometer"></i>
               </span>
@@ -334,18 +335,7 @@ if ($result) {
 } else {
     echo "Error: " . $query . "<br>" . mysqli_error($conn);
 }
-?>
-
-
-
-
-
-                          
-
-
-
-                          
-                         
+?>          
                         </tbody>
                       </table>
                     </div>
@@ -400,7 +390,6 @@ if ($result) {
           <footer class="footer">
           </footer>
             </div>
-            
           </div>
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
