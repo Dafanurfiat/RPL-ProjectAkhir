@@ -296,42 +296,94 @@ if (!isset($_SESSION['username'])) {
                       <table class="table">
                         <thead>
                           <tr>
-                            <th>Profile</th>
-                            <th>VatNo.</th>
-                            <th>Created</th>
-                            <th>Status</th>
+                            <th>No</th>
+                            <th>Gambar</th>
+                            <th>Nama</th>
+                            <th>Amount/g</th>
+                            <th></th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr>
-                            <td>Jacob</td>
-                            <td>53275531</td>
-                            <td>12 May 2017</td>
-                            <td><label class="badge badge-danger">Pending</label></td>
+                            <td>1</td>
+                            <td><img src="../../assets/images/cabai.png" style=" width:50px; height:50px;"alt="logo" /></td>
+                            <td>Cabai</td>
+                            <td><div class="form-outline" data-mdb-input-init >
+                                  <input type="number" id="typeNumber" class="form-control" style="background-color: white; color:black; width: 70px; height: 30px;"/>
+                                  <label class="form-label" for="typeNumber" ></label>
+                                </div>
+                              </label>
+                            </td>
+                            <td>
+                              <div class="d-grid gap-2 d-md-flex center-content-md-end">
+                            <button style=" width"type="button" class="btn btn-outline-success btn-fw" >Accept</button>
+                            <button type="button" class="btn btn-outline-danger btn-fw">Decline</button>
+                            </td>
+                            </div>
                           </tr>
                           <tr>
-                            <td>Messsy</td>
-                            <td>53275532</td>
-                            <td>15 May 2017</td>
-                            <td><label class="badge badge-warning">In progress</label></td>
+                            <td>2</td>
+                            <td><img src="../../assets/images/bawang-merah.png" style=" width:50px; height:50px;"alt="logo" /></td>
+                            <td>Bawang Merah</td>
+                            <td><div class="form-outline" data-mdb-input-init >
+                                  <input type="number" id="typeNumber" class="form-control" style="background-color: white; color:black; width: 70px; height: 30px;"/>
+                                  <label class="form-label" for="typeNumber" ></label>
+                                </div>
+                              </label>
+                            </td>
+                            <td>
+                              <div class="d-grid gap-2 d-md-flex center-content-md-end">
+                            <button style=" width"type="button" class="btn btn-outline-success btn-fw" >Accept</button>
+                            <button type="button" class="btn btn-outline-danger btn-fw">Decline</button>
+                            </td>
                           </tr>
                           <tr>
-                            <td>John</td>
-                            <td>53275533</td>
-                            <td>14 May 2017</td>
-                            <td><label class="badge badge-info">Fixed</label></td>
+                            <td>3</td>
+                            <td><img src="../../assets/images/bawang-putih.png" style=" width:50px; height:50px;"alt="logo" /></td>
+                            <td>Bawang Putih</td>
+                            <td><div class="form-outline" data-mdb-input-init >
+                                  <input type="number" id="typeNumber" class="form-control" style="background-color: white; color:black; width: 70px; height: 30px;"/>
+                                  <label class="form-label" for="typeNumber" ></label>
+                                </div>
+                              </label>
+                            </td>
+                            <td>
+                              <div class="d-grid gap-2 d-md-flex center-content-md-end">
+                            <button style=" width"type="button" class="btn btn-outline-success btn-fw" >Accept</button>
+                            <button type="button" class="btn btn-outline-danger btn-fw">Decline</button>
+                            </td>
                           </tr>
                           <tr>
-                            <td>Peter</td>
-                            <td>53275534</td>
-                            <td>16 May 2017</td>
-                            <td><label class="badge badge-success">Completed</label></td>
+                            <td>4</td>
+                            <td><img src="../../assets/images/minyak.png" style=" width:50px; height:50px;"alt="logo" /></td>
+                            <td>Minyak</td>
+                            <td><div class="form-outline" data-mdb-input-init >
+                                  <input type="number" id="typeNumber" class="form-control" style="background-color: white; color:black; width: 70px; height: 30px;"/>
+                                  <label class="form-label" for="typeNumber" ></label>
+                                </div>
+                              </label>
+                            </td>
+                            <td>
+                              <div class="d-grid gap-2 d-md-flex center-content-md-end">
+                            <button style=" width"type="button" class="btn btn-outline-success btn-fw" >Accept</button>
+                            <button type="button" class="btn btn-outline-danger btn-fw">Decline</button>
+                            </td>
                           </tr>
                           <tr>
-                            <td>Dave</td>
-                            <td>53275535</td>
-                            <td>20 May 2017</td>
-                            <td><label class="badge badge-warning">In progress</label></td>
+                            <td>5</td>
+                            <td><img src="../../assets/images/brokoli.png" style=" width:50px; height:50px;"alt="logo" /></td>
+                            <td>Brokoli</td>
+                            <td><div class="form-outline" data-mdb-input-init >
+                                  <input type="number" id="typeNumber" class="form-control" style="background-color: white; color:black; width: 70px; height: 30px;"/>
+                                  <label class="form-label" for="typeNumber" ></label>
+                                </div>
+                              </label>
+                            </td>
+                            <td>
+                              <div class="d-grid gap-2 d-md-flex center-content-md-end">
+                            <button style=" width"type="button" class="btn btn-outline-success btn-fw" >Accept</button>
+                            <button type="button" class="btn btn-outline-danger btn-fw">Decline</button>
+                            </td>
                           </tr>
                         </tbody>
                       </table>
