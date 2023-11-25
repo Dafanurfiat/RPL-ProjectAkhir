@@ -207,51 +207,50 @@ if (!isset($_SESSION['username'])) {
                           </tr>
                         </thead>
                         <tbody>
+                                                  <?php
+                          $query = "SELECT * FROM `stok-barang` ORDER BY id ASC";;
+                          $result = mysqli_query($conn, $query);
 
-                        <?php
-$query = "SELECT * FROM `stok-barang` ORDER BY id ASC";;
-$result = mysqli_query($conn, $query);
+                          $no = 1;
 
-$no = 1;
-
-// Periksa apakah query berhasil dijalankan
-if ($result) {
-    while ($row = mysqli_fetch_assoc($result)) {
-?>
-        <tr>
-            <td><img src="assets/images/<?php echo $row['Image']; ?>" alt="logo" style="width: 50px; height: 50px; " /></td>
-            <td><?php echo $row['nama_barang']; ?></td>
-            <td><?php echo $row['Jumlah']; ?></td>
-            <td><label class="badge <?php if($row['Jumlah'] <= 50 && $row['Jumlah'] != 0){
-              echo "badge-warning";
-            }if($row['Jumlah']>=50){
-              echo "badge-success";
-            }if($row['Jumlah']==0){
-              echo "badge-danger";
-            } ?>"><?php
-            if ($row['Jumlah'] == 0 ) {
-              echo "Out Of Stock";
-          } elseif ($row['Jumlah'] <= 50 && $row['Jumlah'] != 0) {
-            echo "Almost";
-          } elseif ($row['Jumlah'] >= 50 ) {
-              echo "Available";
-          }
-            ?></label></td>
-        </tr>
-<?php
-        $no++;
-    }
-} else {
-    echo "Error: " . $query . "<br>" . mysqli_error($conn);
-}
-?>          
+                          // Periksa apakah query berhasil dijalankan
+                          if ($result) {
+                              while ($row = mysqli_fetch_assoc($result)) {
+                          ?>
+                                  <tr>
+                                      <td><img src="assets/images/<?php echo $row['Image']; ?>" alt="logo" style="width: 50px; height: 50px; " /></td>
+                                      <td><?php echo $row['nama_barang']; ?></td>
+                                      <td><?php echo $row['Jumlah']; ?></td>
+                                      <td><label class="badge <?php if($row['Jumlah'] <= 50 && $row['Jumlah'] != 0){
+                                        echo "badge-warning";
+                                      }if($row['Jumlah']>=50){
+                                        echo "badge-success";
+                                      }if($row['Jumlah']==0){
+                                        echo "badge-danger";
+                                      } ?>"><?php
+                                      if ($row['Jumlah'] == 0 ) {
+                                        echo "Out Of Stock";
+                                    } elseif ($row['Jumlah'] <= 50 && $row['Jumlah'] != 0) {
+                                      echo "Almost";
+                                    } elseif ($row['Jumlah'] >= 50 ) {
+                                        echo "Available";
+                                    }
+                                      ?></label></td>
+                                  </tr>
+                          <?php
+                                  $no++;
+                              }
+                          } else {
+                              echo "Error: " . $query . "<br>" . mysqli_error($conn);
+                          }
+                          ?>          
                         </tbody>
                       </table>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-lg-12 grid-margin stretch-card">
+              <div class="col-lg-8 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Request History</h4>
@@ -271,7 +270,7 @@ if ($result) {
                             <td> May 15, 2015 </td>
                             <td>
                             <a class="nav-link" href="pages/koki/requestdetail.php">
-                                <button type="button" class="btn btn-primary btn-icon-text"> Detail </button>  
+                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
                               </a> 
                             </td>
                             <td> RP 250.000 </td>
@@ -281,10 +280,48 @@ if ($result) {
                             <td> July 1, 2015 </td>
                             <td>
                             <a class="nav-link" href="pages/koki/requestdetail.php">
-                                <button type="button" class="btn btn-primary btn-icon-text"> Detail </button>  
+                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
                               </a> 
                             </td>
                             <td> RP 125.000 </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Request Product History</h4>
+                    <div class="table-responsive">
+                      <table class="table table-dark">
+                        <thead>
+                          <tr>
+                            <th> No </th>
+                            <th> Date </th>
+                            <th> Detail Usage Product </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td> 1 </td>
+                            <td> May 15, 2015 </td>
+                            <td>
+                            <a class="nav-link" href="pages/koki/detailusageproduct.php">
+                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
+                              </a> 
+                            </td>
+                          </tr>
+                          <tr>
+                            <td> 2 </td>
+                            <td> July 1, 2015 </td>
+                            <td>
+                            <a class="nav-link" href="pages/koki/detailusageproduct.php">
+                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
+                              </a> 
+                            </td>
                           </tr>
                         </tbody>
                       </table>

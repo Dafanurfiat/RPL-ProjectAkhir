@@ -333,7 +333,7 @@ if ($result) {
                             <td> May 15, 2015 </td>
                             <td>
                             <a class="nav-link" href="../template/pages/order/orderdetail.php">
-                                <button type="button" class="btn btn-primary btn-icon-text"> Detail </button>  
+                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
                               </a> 
                             </td>
                             <td> RP 250.000 </td>
@@ -343,7 +343,7 @@ if ($result) {
                             <td> July 1, 2015 </td>
                             <td>
                             <a class="nav-link" href="../template/pages/order/orderdetail.php">
-                                <button type="button" class="btn btn-primary btn-icon-text"> Detail </button>  
+                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
                               </a> 
                             </td>
                             <td> RP 125.000 </td>
