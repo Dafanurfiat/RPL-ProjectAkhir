@@ -211,13 +211,13 @@ if (!isset($_SESSION['username'])) {
               <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Tracking Delivery</h4>
+                    <h4 class="card-title">Track Shipments</h4>
                     <div class="table-responsive">
                       <table class="table table-bordered">
                         <thead>
                           <tr>
                             <th> Icons </th>
-                            <th> Transaction Detail </th>
+                            <th> Transaction Details </th>
                             <th> Date </th>
                             <th> Status </th>
                           </tr>

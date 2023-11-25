@@ -213,13 +213,13 @@ if (!isset($_SESSION['username'])) {
               <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Detail Transaction</h4>
+                    <h4 class="card-title">Transaction Details</h4>
                     <div class="table-responsive">
                       <table class="table">
                         <thead>
                           <tr>
                             <th>No</th>
-                            <th>Name Product</th>
+                            <th>Ingredients</th>
                             <th>Amount/g</th>
                             <th>Price</th>
                           </tr>

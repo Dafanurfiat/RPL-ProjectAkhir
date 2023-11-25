@@ -211,14 +211,14 @@ if (!isset($_SESSION['username'])) {
               <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Order Table</h4>
+                    <h4 class="card-title">Table Order</h4>
                     <div class="table-responsive">
                       <table class="table">
                         <thead>
                           <tr>
                             <th>No</th>
                             <th>Picture</th>
-                            <th>Name Product</th>
+                            <th>Ingredients</th>
                             <th>Amount/g</th>
                           </tr>
                         </thead>
@@ -276,7 +276,7 @@ if (!isset($_SESSION['username'])) {
                           <tr>
                             <th> No </th>
                             <th> Date </th>
-                            <th> Detail Transaction </th>
+                            <th> Transaction Details </th>
                             <th> Total Price </th>
                             <th> Action </th>
                           </tr>
@@ -334,7 +334,7 @@ if (!isset($_SESSION['username'])) {
                           <tr>
                             <th> No </th>
                             <th> Date </th>
-                            <th> Detail Transaction </th>
+                            <th> Transaction Details </th>
                             <th> Total Price </th>
                             <th> Status </th>
                             <th> Action </th>
@@ -429,7 +429,7 @@ if (!isset($_SESSION['username'])) {
                           <tr>
                             <th> No </th>
                             <th> Date </th>
-                            <th> Detail Transaction </th>
+                            <th> Transaction details </th>
                             <th> Total Price </th>
                           </tr>
                         </thead>

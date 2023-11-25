@@ -212,56 +212,55 @@ if (!isset($_SESSION['username'])) {
               <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Stock List</h4>
+                    <h4 class="card-title">List Stock</h4>
                     <div class="table-responsive">
                       <table class="table" >
                         <thead>
                           <tr>
                             <th>Picture</th>
-                            <th>Name</th>
+                            <th>Ingredients</th>
                             <th>Stock/g</th>
                             <th>Status</th>
                           </tr>
                         </thead>
                         <tbody>
-
                         <?php
-$query = "SELECT * FROM `stok-barang` ORDER BY id ASC";;
-$result = mysqli_query($conn, $query);
+                          $query = "SELECT * FROM `stok-barang` ORDER BY id ASC";;
+                          $result = mysqli_query($conn, $query);
 
-$no = 1;
+                          $no = 1;
 
-// Periksa apakah query berhasil dijalankan
-if ($result) {
-    while ($row = mysqli_fetch_assoc($result)) {
-?>
-        <tr>
-            <td><img src="assets/images/<?php echo $row['Image']; ?>" alt="logo" style="width: 50px; height: 50px; " /></td>
-            <td><?php echo $row['nama_barang']; ?></td>
-            <td><?php echo $row['Jumlah']; ?></td>
-            <td><label class="badge <?php if($row['Jumlah'] <= 50 && $row['Jumlah'] != 0){
-              echo "badge-warning";
-            }if($row['Jumlah']>=50){
-              echo "badge-success";
-            }if($row['Jumlah']==0){
-              echo "badge-danger";
-            } ?>"><?php
-            if ($row['Jumlah'] == 0 ) {
-              echo "Out Of Stock";
-          } elseif ($row['Jumlah'] <= 50 && $row['Jumlah'] != 0) {
-            echo "Almost";
-          } elseif ($row['Jumlah'] >= 50 ) {
-              echo "Available";
-          }
-            ?></label></td>
-        </tr>
-<?php
-        $no++;
-    }
-} else {
-    echo "Error: " . $query . "<br>" . mysqli_error($conn);
-}
-?>          
+                          // Periksa apakah query berhasil dijalankan
+                          if ($result) {
+                              while ($row = mysqli_fetch_assoc($result)) {
+                          ?>
+                           <tr>
+                               <td><img src="assets/images/<?php echo $row['Image']; ?>" alt="logo" style="width: 50px; height: 50px; " /></td>
+                               <td><?php echo $row['nama_barang']; ?></td>
+                               <td><?php echo $row['Jumlah']; ?></td>
+                               <td><label class="badge <?php if($row['Jumlah'] <= 50 && $row['Jumlah'] != 0){
+                                 echo "badge-warning";
+                               }if($row['Jumlah']>=50){
+                                 echo "badge-success";
+                               }if($row['Jumlah']==0){
+                                 echo "badge-danger";
+                               } ?>"><?php
+                               if ($row['Jumlah'] == 0 ) {
+                                 echo "Out Of Stock";
+                             } elseif ($row['Jumlah'] <= 50 && $row['Jumlah'] != 0) {
+                               echo "Almost";
+                             } elseif ($row['Jumlah'] >= 50 ) {
+                                 echo "Available";
+                             }
+                               ?></label></td>
+                           </tr>
+                          <?php
+                                  $no++;
+                              }
+                          } else {
+                              echo "Error: " . $query . "<br>" . mysqli_error($conn);
+                          }
+                          ?>          
                         </tbody>
                       </table>
                     </div>
@@ -271,7 +270,7 @@ if ($result) {
               <div class="col-lg-6 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Staff List</h4>
+                    <h4 class="card-title">List Staff</h4>
                     <div class="table-responsive">
                       <table class="table">
                         <thead>
