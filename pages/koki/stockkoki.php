@@ -201,7 +201,7 @@ if (!isset($_SESSION['username'])) {
                         <thead>
                           <tr>
                             <th>Picture</th>
-                            <th>Product</th>
+                            <th>Ingredients</th>
                             <th>Amount/g</th>
                             <th>Status</th>
                           </tr>
