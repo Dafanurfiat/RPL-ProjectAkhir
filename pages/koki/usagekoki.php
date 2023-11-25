@@ -189,61 +189,43 @@ if (!isset($_SESSION['username'])) {
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Stock </h3>
+            <a class="nav-link" href="usageproduct.php">
+                <button type="button" class="btn btn-outline-success btn-icon-text"> <i class="mdi mdi-plus" ></i> Add Usage </button>  
+              </a> 
             </div>
             <div class="row">
-              <div class="col-lg-12 grid-margin stretch-card">
+            <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Stock List</h4>
+                    <h4 class="card-title">Request Product History</h4>
                     <div class="table-responsive">
-                      <table class="table">
+                      <table class="table table-dark">
                         <thead>
                           <tr>
-                            <th>Picture</th>
-                            <th>Name</th>
-                            <th>Amount/g</th>
-                            <th>Status</th>
+                            <th> No </th>
+                            <th> Date </th>
+                            <th> Detail Usage Product </th>
                           </tr>
                         </thead>
                         <tbody>
-                        <?php
-                        $query = "SELECT * FROM `stok-barang` ORDER BY id ASC";;
-                        $result = mysqli_query($conn, $query);
-                        
-                        $no = 1;
-                        
-                        // Periksa apakah query berhasil dijalankan
-                        if ($result) {
-                            while ($row = mysqli_fetch_assoc($result)) {
-                        ?>
-                                <tr>
-                                    <td><img src="../../assets/images/<?php echo $row['Image']; ?>" alt="logo" style="width: 50px; height: 50px; " /></td>
-                                    <td><?php echo $row['nama_barang']; ?></td>
-                                    <td><?php echo $row['Jumlah']; ?></td>
-                                    <td><label class="badge <?php if($row['Jumlah'] <= 50 && $row['Jumlah'] != 0){
-                                      echo "badge-warning";
-                                    }if($row['Jumlah']>=50){
-                                      echo "badge-success";
-                                    }if($row['Jumlah']==0){
-                                      echo "badge-danger";
-                                    } ?>"><?php
-                                    if ($row['Jumlah'] == 0 ) {
-                                      echo "Out Of Stock";
-                                  } elseif ($row['Jumlah'] <= 50 && $row['Jumlah'] != 0) {
-                                    echo "Almost";
-                                  } elseif ($row['Jumlah'] >= 50 ) {
-                                      echo "Available";
-                                  }
-                                    ?></label></td>
-                                </tr>
-                        <?php
-                                $no++;
-                            }
-                        } else {
-                            echo "Error: " . $query . "<br>" . mysqli_error($conn);
-                        }
-                        ?>
+                          <tr>
+                            <td> 1 </td>
+                            <td> May 15, 2015 </td>
+                            <td>
+                            <a class="nav-link" href="detailusageproduct.php">
+                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
+                              </a> 
+                            </td>
+                          </tr>
+                          <tr>
+                            <td> 2 </td>
+                            <td> July 1, 2015 </td>
+                            <td>
+                            <a class="nav-link" href="detailusageproduct.php">
+                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
+                              </a> 
+                            </td>
+                          </tr>
                         </tbody>
                       </table>
                     </div>
@@ -273,6 +255,7 @@ if (!isset($_SESSION['username'])) {
     <script src="../../assets/js/misc.js"></script>
     <script src="../../assets/js/settings.js"></script>
     <script src="../../assets/js/todolist.js"></script>
+    
     <!-- endinject -->
     <!-- Custom js for this page -->
     <!-- End custom js for this page -->
