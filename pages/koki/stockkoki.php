@@ -195,13 +195,13 @@ if (!isset($_SESSION['username'])) {
               <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Stock List</h4>
+                    <h4 class="card-title">List Stock</h4>
                     <div class="table-responsive">
                       <table class="table">
                         <thead>
                           <tr>
                             <th>Picture</th>
-                            <th>Name</th>
+                            <th>Product</th>
                             <th>Amount/g</th>
                             <th>Status</th>
                           </tr>

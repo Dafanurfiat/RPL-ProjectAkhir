@@ -197,14 +197,14 @@ if (!isset($_SESSION['username'])) {
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Request Product History</h4>
+                    <h4 class="card-title">Product Request History</h4>
                     <div class="table-responsive">
                       <table class="table table-dark">
                         <thead>
                           <tr>
                             <th> No </th>
                             <th> Date </th>
-                            <th> Detail Usage Product </th>
+                            <th> Menu Usage Details </th>
                           </tr>
                         </thead>
                         <tbody>

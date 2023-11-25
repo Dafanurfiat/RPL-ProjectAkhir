@@ -201,7 +201,7 @@ if (!isset($_SESSION['username'])) {
                         <thead>
                           <tr>
                             <th>Picture</th>
-                            <th>Name</th>
+                            <th>Product</th>
                             <th>Amount/g</th>
                             <th>Status</th>
                           </tr>
@@ -260,7 +260,7 @@ if (!isset($_SESSION['username'])) {
                           <tr>
                             <th> No </th>
                             <th> Date </th>
-                            <th> Detail Request </th>
+                            <th> Request Details </th>
                             <th> Total Price </th>
                           </tr>
                         </thead>
@@ -301,7 +301,7 @@ if (!isset($_SESSION['username'])) {
                           <tr>
                             <th> No </th>
                             <th> Date </th>
-                            <th> Detail Usage Product </th>
+                            <th> Menu Usage Details </th>
                           </tr>
                         </thead>
                         <tbody>

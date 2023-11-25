@@ -204,7 +204,7 @@ if (!isset($_SESSION['username'])) {
                             <th>No</th>
                             <th>Menu</th>
                             <th>Amount</th>
-                            <th>Ingridients</th>
+                            <th>Ingredients</th>
                           </tr>
                         </thead>
                         <tbody>
