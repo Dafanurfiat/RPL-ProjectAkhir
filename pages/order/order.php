@@ -1,5 +1,6 @@
 <?php
 include '../../config.php';
+include 'process.php';
 session_start();
 
  
@@ -7,6 +8,11 @@ if (!isset($_SESSION['username'])) {
     header("Location: index.php");
     exit(); // Terminate script execution after the redirect
 }
+$nomor = $_POST['nomor'];
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -60,7 +66,7 @@ if (!isset($_SESSION['username'])) {
           <li class="nav-item menu-items">
             <a class="nav-link" href="../../index.php">
               <span class="menu-icon">
-                <i class="mdi mdi-speedometer"></i>
+                <i class="mdi mdi-home-variant"></i>
               </span>
               <span class="menu-title">Dashboard</span>
             </a>
@@ -68,7 +74,7 @@ if (!isset($_SESSION['username'])) {
           <li class="nav-item menu-items">
             <a class="nav-link" href="../../pages/stock/stock.php">
               <span class="menu-icon">
-                <i class="mdi mdi-speedometer"></i>
+                <i class="mdi mdi-package-variant-closed"></i>
               </span>
               <span class="menu-title">Stock</span>
             </a>
@@ -76,7 +82,7 @@ if (!isset($_SESSION['username'])) {
           <li class="nav-item menu-items">
             <a class="nav-link" href="order.php">
               <span class="menu-icon">
-                <i class="mdi mdi-speedometer"></i>
+                <i class="mdi mdi-file-document"></i>
               </span>
               <span class="menu-title">Order</span>
             </a>
@@ -84,7 +90,7 @@ if (!isset($_SESSION['username'])) {
           <li class="nav-item menu-items">
             <a class="nav-link" href="../../pages/staff/staff.php">
               <span class="menu-icon">
-                <i class="mdi mdi-speedometer"></i>
+                <i class="mdi mdi-account"></i>
               </span>
               <span class="menu-title">Staff</span>
             </a>
@@ -92,7 +98,7 @@ if (!isset($_SESSION['username'])) {
           <li class="nav-item menu-items">
             <a class="nav-link" href="../../pages/delivery/delivery.php">
               <span class="menu-icon">
-                <i class="mdi mdi-speedometer"></i>
+                <i class="mdi mdi-truck"></i>
               </span>
               <span class="menu-title">Delivery</span>
             </a>
@@ -100,7 +106,7 @@ if (!isset($_SESSION['username'])) {
           <li class="nav-item menu-items">
             <a class="nav-link" href="../../pages/report/report.php">
               <span class="menu-icon">
-                <i class="mdi mdi-speedometer"></i>
+                <i class="mdi mdi-chart-bar"></i>
               </span>
               <span class="menu-title">Report</span>
             </a>
@@ -296,97 +302,83 @@ if (!isset($_SESSION['username'])) {
                       <table class="table">
                         <thead>
                           <tr>
-                            <th>No</th>
+                            <th>Checkbox</th>
                             <th>Gambar</th>
                             <th>Nama</th>
                             <th>Amount/g</th>
-                            <th></th>
+                            <th>Pilihan</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td>1</td>
-                            <td><img src="../../assets/images/cabai.png" style=" width:50px; height:50px;"alt="logo" /></td>
-                            <td>Cabai</td>
-                            <td><div class="form-outline" data-mdb-input-init >
-                                  <input type="number" id="typeNumber" class="form-control" style="background-color: white; color:black; width: 70px; height: 30px;"/>
-                                  <label class="form-label" for="typeNumber" ></label>
-                                </div>
-                              </label>
-                            </td>
-                            <td>
-                              <div class="d-grid gap-2 d-md-flex center-content-md-end">
-                            <button style=" width"type="button" class="btn btn-outline-success btn-fw" >Accept</button>
-                            <button type="button" class="btn btn-outline-danger btn-fw">Decline</button>
-                            </td>
-                            </div>
-                          </tr>
-                          <tr>
-                            <td>2</td>
-                            <td><img src="../../assets/images/bawang-merah.png" style=" width:50px; height:50px;"alt="logo" /></td>
-                            <td>Bawang Merah</td>
-                            <td><div class="form-outline" data-mdb-input-init >
-                                  <input type="number" id="typeNumber" class="form-control" style="background-color: white; color:black; width: 70px; height: 30px;"/>
-                                  <label class="form-label" for="typeNumber" ></label>
-                                </div>
-                              </label>
-                            </td>
-                            <td>
-                              <div class="d-grid gap-2 d-md-flex center-content-md-end">
-                            <button style=" width"type="button" class="btn btn-outline-success btn-fw" >Accept</button>
-                            <button type="button" class="btn btn-outline-danger btn-fw">Decline</button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>3</td>
-                            <td><img src="../../assets/images/bawang-putih.png" style=" width:50px; height:50px;"alt="logo" /></td>
-                            <td>Bawang Putih</td>
-                            <td><div class="form-outline" data-mdb-input-init >
-                                  <input type="number" id="typeNumber" class="form-control" style="background-color: white; color:black; width: 70px; height: 30px;"/>
-                                  <label class="form-label" for="typeNumber" ></label>
-                                </div>
-                              </label>
-                            </td>
-                            <td>
-                              <div class="d-grid gap-2 d-md-flex center-content-md-end">
-                            <button style=" width"type="button" class="btn btn-outline-success btn-fw" >Accept</button>
-                            <button type="button" class="btn btn-outline-danger btn-fw">Decline</button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>4</td>
-                            <td><img src="../../assets/images/minyak.png" style=" width:50px; height:50px;"alt="logo" /></td>
-                            <td>Minyak</td>
-                            <td><div class="form-outline" data-mdb-input-init >
-                                  <input type="number" id="typeNumber" class="form-control" style="background-color: white; color:black; width: 70px; height: 30px;"/>
-                                  <label class="form-label" for="typeNumber" ></label>
-                                </div>
-                              </label>
-                            </td>
-                            <td>
-                              <div class="d-grid gap-2 d-md-flex center-content-md-end">
-                            <button style=" width"type="button" class="btn btn-outline-success btn-fw" >Accept</button>
-                            <button type="button" class="btn btn-outline-danger btn-fw">Decline</button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>5</td>
-                            <td><img src="../../assets/images/brokoli.png" style=" width:50px; height:50px;"alt="logo" /></td>
-                            <td>Brokoli</td>
-                            <td><div class="form-outline" data-mdb-input-init >
-                                  <input type="number" id="typeNumber" class="form-control" style="background-color: white; color:black; width: 70px; height: 30px;"/>
-                                  <label class="form-label" for="typeNumber" ></label>
-                                </div>
-                              </label>
-                            </td>
-                            <td>
-                              <div class="d-grid gap-2 d-md-flex center-content-md-end">
-                            <button style=" width"type="button" class="btn btn-outline-success btn-fw" >Accept</button>
-                            <button type="button" class="btn btn-outline-danger btn-fw">Decline</button>
-                            </td>
-                          </tr>
+                          
+
+
+
+
+                        <?php
+$query = "SELECT * FROM `order` ORDER BY id ASC";;
+$result = mysqli_query($conn, $query);
+
+$no = 1;
+
+// Periksa apakah query berhasil dijalankan
+if ($result) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        ?>
+        <tr data-id="<?php echo $row['id']; ?>">
+            <td><div class="form-check form-check-muted m-0">
+                <label class="form-check-label">
+                  <input type="checkbox" class="form-check-input">
+                </label>
+              </div></td>
+            <td><img src="../../assets/images/<?php echo $row['Image']; ?>" style=" width:50px; height:50px;"alt="logo" /></td>
+            <td><?php echo $row['nama_barang']; ?></td>
+            <td>
+                <div class="form-outline" data-mdb-input-init >
+                  <form action="process.php" method="POST">
+                  <input type="number" name="nomor" id="typeNumber" class="form-control" style="background-color: white; color:black; width: 70px; height: 30px;"/>
+                    <label class="form-label" for="typeNumber" ></label>
+                  </form>
+                    
+                </div>
+            </td>
+            <td>
+                <div class="d-grid gap-2 d-md-flex center-content-md-end">
+                    <button style=" width"type="button" name="accept" class="btn btn-outline-success btn-fw" onclick="acceptOrder(<?php echo $row['id']; ?> , <?php echo $nomor; ?>)">Accept</button>
+                    <button type="button" name="decline" class="btn btn-outline-danger btn-fw" onclick="declineOrder(<?php echo $row['id']; ?>)">Decline</button>
+                </div>
+            </td>
+        </tr>
+        <?php
+        $no++;
+    }
+} else {
+    echo "Error: " . $query . "<br>" . mysqli_error($conn);
+}
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
                         </tbody>
                       </table>
+                      <footer class="footer">
+                      <div class="d-grid gap-2 d-md-flex justify-content-md-end" >
+                            <button type="button" class="btn btn-success btn-icon-text">
+                            <i class="mdi mdi-checkbox-marked"></i> Order </button>
+                            <button type="button" class="btn btn-danger btn-icon-text">
+                            <i class="mdi mdi-close-box"></i> Cancel </button>
+                      </div>
+                      </footer>
                     </div>
                   </div>
                 </div>
@@ -414,6 +406,39 @@ if (!isset($_SESSION['username'])) {
     <script src="../../assets/js/misc.js"></script>
     <script src="../../assets/js/settings.js"></script>
     <script src="../../assets/js/todolist.js"></script>
+
+
+
+
+    <script>
+function acceptOrder(orderId) {
+    var nomor = $("#typeNumber").val();  // Mengambil nilai dari input nomor
+    // Kirim permintaan AJAX ke server untuk memproses data
+    $.ajax({
+        type: 'POST',
+        url: 'process.php',
+        data: { action: 'accept', orderId: orderId, nomor: nomor },
+        success: function(response) {
+            // Tambahkan kode untuk menanggapi respons dari server jika diperlukan
+            console.log(response);
+        }
+    });
+}
+
+function declineOrder(orderId) {
+    // Kirim permintaan AJAX ke server untuk memproses data
+    $.ajax({
+        type: 'POST',
+        url: 'process.php',
+        data: { action: 'decline', orderId: orderId },
+        success: function(response) {
+            // Tambahkan kode untuk menanggapi respons dari server jika diperlukan
+            console.log(response);
+        }
+    });
+}
+</script>
+
     <!-- endinject -->
     <!-- Custom js for this page -->
     <!-- End custom js for this page -->

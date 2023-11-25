@@ -60,7 +60,7 @@ if (!isset($_SESSION['username'])) {
           <li class="nav-item menu-items">
             <a class="nav-link" href="../../index.php">
               <span class="menu-icon">
-                <i class="mdi mdi-speedometer"></i>
+                <i class="mdi mdi-home-variant"></i>
               </span>
               <span class="menu-title">Dashboard</span>
             </a>
@@ -68,7 +68,7 @@ if (!isset($_SESSION['username'])) {
           <li class="nav-item menu-items">
             <a class="nav-link" href="stock.php">
               <span class="menu-icon">
-                <i class="mdi mdi-speedometer"></i>
+                <i class="mdi mdi-package-variant-closed"></i>
               </span>
               <span class="menu-title">Stock</span>
             </a>
@@ -76,7 +76,7 @@ if (!isset($_SESSION['username'])) {
           <li class="nav-item menu-items">
             <a class="nav-link" href="../../pages/order/order.php">
               <span class="menu-icon">
-                <i class="mdi mdi-speedometer"></i>
+                <i class="mdi mdi-file-document"></i>
               </span>
               <span class="menu-title">Order</span>
             </a>
@@ -84,7 +84,7 @@ if (!isset($_SESSION['username'])) {
           <li class="nav-item menu-items">
             <a class="nav-link" href="../../pages/staff/staff.php">
               <span class="menu-icon">
-                <i class="mdi mdi-speedometer"></i>
+                <i class="mdi mdi-account"></i>
               </span>
               <span class="menu-title">Staff</span>
             </a>
@@ -92,7 +92,7 @@ if (!isset($_SESSION['username'])) {
           <li class="nav-item menu-items">
             <a class="nav-link" href="../../pages/delivery/delivery.php">
               <span class="menu-icon">
-                <i class="mdi mdi-speedometer"></i>
+                <i class="mdi mdi-truck"></i>
               </span>
               <span class="menu-title">Delivery</span>
             </a>
@@ -100,7 +100,7 @@ if (!isset($_SESSION['username'])) {
           <li class="nav-item menu-items">
             <a class="nav-link" href="../../pages/report/report.php">
               <span class="menu-icon">
-                <i class="mdi mdi-speedometer"></i>
+                <i class="mdi mdi-chart-bar"></i>
               </span>
               <span class="menu-title">Report</span>
             </a>
