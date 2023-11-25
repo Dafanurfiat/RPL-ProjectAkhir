@@ -354,9 +354,7 @@ if (!isset($_SESSION['username'])) {
                                 <label class="badge badge-warning">On progress</label>
                             </td>
                             <td>
-                            <a class="nav-link" href="../../pages/order/orderdetail.php">
                                 <button type="button" class="btn btn-outline-danger btn-icon-text"> Delete </button>  
-                              </a> 
                             </td>
                           </tr>
                           <tr>
@@ -372,9 +370,7 @@ if (!isset($_SESSION['username'])) {
                                 <label class="badge badge-danger">Decline</label>
                             </td>
                             <td>
-                            <a class="nav-link" href="../../pages/order/orderdetail.php">
                                 <button type="button" class="btn btn-outline-danger btn-icon-text"> Delete </button>  
-                              </a> 
                             </td>
                           </tr>
                           <tr>
@@ -390,9 +386,7 @@ if (!isset($_SESSION['username'])) {
                                 <label class="badge badge-success">Accept</label>
                             </td>
                             <td>
-                            <a class="nav-link" href="../../pages/order/orderdetail.php">
                                 <button type="button" class="btn btn-outline-danger btn-icon-text"> Delete </button>  
-                              </a> 
                             </td>
                           </tr>
                           <tr>
@@ -408,9 +402,7 @@ if (!isset($_SESSION['username'])) {
                                 <label class="badge badge-primary">Pending</label>
                             </td>
                             <td>
-                            <a class="nav-link" href="../../pages/order/orderdetail.php">
                                 <button type="button" class="btn btn-outline-danger btn-icon-text"> Delete </button>  
-                              </a> 
                             </td>
                           </tr>
                         </tbody>
