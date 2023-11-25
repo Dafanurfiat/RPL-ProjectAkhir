@@ -265,9 +265,9 @@ if (!isset($_SESSION['username'])) {
                       </table>
                       <footer class="footer">
                       <div class="d-grid gap-2 d-md-flex justify-content-md-end" >
-                            <button type="button" class="btn btn-success btn-icon-text">
+                            <button type="button" class="btn btn-outline-success btn-icon-text">
                             <i class="mdi mdi-plus"></i> Create </button>
-                            <button type="button" class="btn btn-danger btn-icon-text">
+                            <button type="button" class="btn btn-outline-danger btn-icon-text">
                             <i class="mdi mdi-close-box"></i> Cancel </button>
                       </div>
                       </footer>
