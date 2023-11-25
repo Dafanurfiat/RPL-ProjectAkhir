@@ -105,80 +105,6 @@ if (!isset($_SESSION['username'])) {
               <span class="menu-title">Report</span>
             </a>
           </li>
-          <li class="nav-item menu-items">
-            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-              <span class="menu-icon">
-                <i class="mdi mdi-laptop"></i>
-              </span>
-              <span class="menu-title">Basic UI Elements</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="ui-basic">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/buttons.html">Buttons</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/dropdowns.html">Dropdowns</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/typography.html">Typography</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item menu-items">
-            <a class="nav-link" href="../../pages/forms/basic_elements.html">
-              <span class="menu-icon">
-                <i class="mdi mdi-playlist-play"></i>
-              </span>
-              <span class="menu-title">Form Elements</span>
-            </a>
-          </li>
-          <li class="nav-item menu-items">
-            <a class="nav-link" href="../../pages/tables/basic-table.html">
-              <span class="menu-icon">
-                <i class="mdi mdi-table-large"></i>
-              </span>
-              <span class="menu-title">Tables</span>
-            </a>
-          </li>
-          <li class="nav-item menu-items">
-            <a class="nav-link" href="../../pages/charts/chartjs.html">
-              <span class="menu-icon">
-                <i class="mdi mdi-chart-bar"></i>
-              </span>
-              <span class="menu-title">Charts</span>
-            </a>
-          </li>
-          <li class="nav-item menu-items">
-            <a class="nav-link" href="../../pages/icons/mdi.html">
-              <span class="menu-icon">
-                <i class="mdi mdi-contacts"></i>
-              </span>
-              <span class="menu-title">Icons</span>
-            </a>
-          </li>
-          <li class="nav-item menu-items">
-            <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-              <span class="menu-icon">
-                <i class="mdi mdi-security"></i>
-              </span>
-              <span class="menu-title">User Pages</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="auth">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../../pages/samples/blank-page.html"> Blank Page </a></li>
-                <li class="nav-item"> <a class="nav-link" href="../../pages/samples/error-404.html"> 404 </a></li>
-                <li class="nav-item"> <a class="nav-link" href="../../pages/samples/error-500.html"> 500 </a></li>
-                <li class="nav-item"> <a class="nav-link" href="../../pages/samples/login.php"> Login </a></li>
-                <li class="nav-item"> <a class="nav-link" href="../../pages/samples/register.html"> Register </a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item menu-items">
-            <a class="nav-link" href="http://www.bootstrapdash.com/demo/corona-free/jquery/documentation/documentation.html">
-              <span class="menu-icon">
-                <i class="mdi mdi-file-document-box"></i>
-              </span>
-              <span class="menu-title">Documentation</span>
-            </a>
-          </li>
         </ul>
       </nav>
       <!-- partial -->
@@ -282,7 +208,6 @@ if (!isset($_SESSION['username'])) {
               <h3 class="page-title"> Delivery </h3>
             </div>
             <div class="row">
-              
               <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
@@ -292,51 +217,43 @@ if (!isset($_SESSION['username'])) {
                         <thead>
                           <tr>
                             <th> Icons </th>
-                            <th> Product </th>
+                            <th> Transaction Detail </th>
+                            <th> Date </th>
                             <th> Status </th>
-                            <th> Amount (g)</th>
-                            <th> Harga (Rp) </th>
-                            <th> Date Time </th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr>
                             <td style="size: 100px;"><i  class="mdi mdi-truck" style="font-size: 30px;"></i></td>
-                            <td> Herman Beck </td>
+                            <td> 
+                            <a class="nav-link" href="../../pages/order/orderdetail.php">
+                                <button type="button" class="btn btn-primary btn-icon-text"> Detail </button>  
+                              </a>  
+                            </td>
+                            <td> May 15, 2020  </td>
                             <td>
                                 <label class="badge badge-warning">on the road</label>
                             </td>
-                            <td> 2 </td>
-                            <td> Rp 125.000 </td>
                           </tr>
                           <tr>
                             <td> <i  class="mdi mdi-truck" style="font-size: 30px;"> </td>
-                            <td> Messsy Adam </td>
+                            <td> 
+                            <a class="nav-link" href="../../pages/order/orderdetail.php">
+                                <button type="button" class="btn btn-primary btn-icon-text"> Detail </button>  
+                              </a> 
+                            </td>
+                            <td> May 15, 2015 </td>
                             <td>
                                 <label class="badge badge-success">Arrived</label>
                             </td>
-                            <td> 3 </td>
-                            <td> Rp 145.000 </td>
                           </tr>
-                          <tr>
-                            <td> <i  class="mdi mdi-truck" style="font-size: 30px;"> </td>
-                            <td> John Richards </td>
-                            <td>
-                                <label class="badge badge-success">Arrived</label>
-                            </td>
-                            <td> 4 </td>
-                            <td> Rp 10.000 </td>
                           </tr>
-                          <tr>
-                            <td> <i  class="mdi mdi-truck" style="font-size: 30px;"> </td>
-                            <td> Peter Meggik </td>
-                            <td>
-                                <label class="badge badge-warning">on the road</label>
-                            </td>
-                            <td> 1 </td>
-                            <td> Rp 35.000 </td>
-                          </tr>
-             
+                          </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
           <!-- content-wrapper ends -->
           <!-- partial:../../partials/_footer.html -->
           <!-- partial -->

@@ -105,80 +105,6 @@ if (!isset($_SESSION['username'])) {
               <span class="menu-title">Report</span>
             </a>
           </li>
-          <li class="nav-item menu-items">
-            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-              <span class="menu-icon">
-                <i class="mdi mdi-laptop"></i>
-              </span>
-              <span class="menu-title">Basic UI Elements</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="ui-basic">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/buttons.html">Buttons</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/dropdowns.html">Dropdowns</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/typography.html">Typography</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item menu-items">
-            <a class="nav-link" href="../../pages/forms/basic_elements.html">
-              <span class="menu-icon">
-                <i class="mdi mdi-playlist-play"></i>
-              </span>
-              <span class="menu-title">Form Elements</span>
-            </a>
-          </li>
-          <li class="nav-item menu-items">
-            <a class="nav-link" href="../../pages/tables/basic-table.html">
-              <span class="menu-icon">
-                <i class="mdi mdi-table-large"></i>
-              </span>
-              <span class="menu-title">Tables</span>
-            </a>
-          </li>
-          <li class="nav-item menu-items">
-            <a class="nav-link" href="../../pages/charts/chartjs.html">
-              <span class="menu-icon">
-                <i class="mdi mdi-chart-bar"></i>
-              </span>
-              <span class="menu-title">Charts</span>
-            </a>
-          </li>
-          <li class="nav-item menu-items">
-            <a class="nav-link" href="../../pages/icons/mdi.html">
-              <span class="menu-icon">
-                <i class="mdi mdi-contacts"></i>
-              </span>
-              <span class="menu-title">Icons</span>
-            </a>
-          </li>
-          <li class="nav-item menu-items">
-            <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-              <span class="menu-icon">
-                <i class="mdi mdi-security"></i>
-              </span>
-              <span class="menu-title">User Pages</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="auth">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../../pages/samples/blank-page.html"> Blank Page </a></li>
-                <li class="nav-item"> <a class="nav-link" href="../../pages/samples/error-404.html"> 404 </a></li>
-                <li class="nav-item"> <a class="nav-link" href="../../pages/samples/error-500.html"> 500 </a></li>
-                <li class="nav-item"> <a class="nav-link" href="../../pages/samples/login.php"> Login </a></li>
-                <li class="nav-item"> <a class="nav-link" href="../../pages/samples/register.html"> Register </a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item menu-items">
-            <a class="nav-link" href="http://www.bootstrapdash.com/demo/corona-free/jquery/documentation/documentation.html">
-              <span class="menu-icon">
-                <i class="mdi mdi-file-document-box"></i>
-              </span>
-              <span class="menu-title">Documentation</span>
-            </a>
-          </li>
         </ul>
       </nav>
       <!-- partial -->
@@ -280,12 +206,6 @@ if (!isset($_SESSION['username'])) {
           <div class="content-wrapper">
             <div class="page-header">
               <h3 class="page-title"> Order </h3>
-              <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">Tables</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Basic tables</li>
-                </ol>
-              </nav>
             </div>
             <div class="row">
               <div class="col-lg-12 grid-margin stretch-card">
@@ -297,8 +217,8 @@ if (!isset($_SESSION['username'])) {
                         <thead>
                           <tr>
                             <th>No</th>
-                            <th>Gambar</th>
-                            <th>Nama</th>
+                            <th>Picture</th>
+                            <th>Name Product</th>
                             <th>Amount/g</th>
                           </tr>
                         </thead>
@@ -332,47 +252,6 @@ if (!isset($_SESSION['username'])) {
                             </td>
                           </tr>
                           <tr>
-                            <td>
-                            3
-                          </td>
-                            <td><img src="../../assets/images/bawang-putih.png" style=" width:50px; height:50px;"alt="logo" /></td>
-                            <td>Bawang Putih</td>
-                            <td>
-                              <div class="form-outline" data-mdb-input-init >
-                              <i class="fas fa-dollar-sign trailing"></i>
-                                <input type="number" id="typeNumber" class="form-control" style="background-color: white; color:black; width: 70px; height: 30px;" value="0" min="0"/>
-                                  <label class="form-label" for="typeNumber" ></label>
-                                </div>
-                              </label>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                            4
-                          </td>
-                            <td><img src="../../assets/images/minyak.png" style=" width:50px; height:50px;"alt="logo" /></td>
-                            <td>Minyak</td>
-                            <td>
-                              <div class="form-outline" data-mdb-input-init >
-                                <input type="number" id="typeNumber" class="form-control" style="background-color: white; color:black; width: 70px; height: 30px;" value="0" min="0"/>
-                                  <label class="form-label" for="typeNumber" ></label>
-                                </div>
-                              </label>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              5
-                            </td>
-                            <td><img src="../../assets/images/brokoli.png" style=" width:50px; height:50px;"alt="logo" /></td>
-                            <td>Brokoli</td>
-                            <td>
-                              <div class="form-outline" data-mdb-input-init >
-                            <input type="number" id="typeNumber" class="form-control" style="background-color: white; color:black; width: 70px; height: 30px;" value="0" min="0"/>
-                                  <label class="form-label" for="typeNumber" ></label>
-                                </div>
-                              </label>
-                            </td>
                         </tbody>
                       </table>
                       <footer class="footer">
@@ -406,7 +285,11 @@ if (!isset($_SESSION['username'])) {
                           <tr>
                             <td> 1 </td>
                             <td> May 15, 2015 </td>
-                            <td> <button type="button" class="btn btn-primary btn-icon-text"> Detail </button>  </td>
+                            <td> 
+                              <a class="nav-link" href="../../pages/order/orderdetail.php">
+                                <button type="button" class="btn btn-primary btn-icon-text"> Detail </button>  
+                              </a>
+                              </td>
                             <td> RP 250.000 </td>
                             <td>
                             <div class="d-grid gap-2 d-md-flex justify-content-md-start" >
@@ -420,8 +303,10 @@ if (!isset($_SESSION['username'])) {
                           <tr>
                             <td> 2 </td>
                             <td> July 1, 2015 </td>
-                            <td> 
-                            <button type="button" class="btn btn-primary btn-icon-text"> Detail </button> 
+                            <td>
+                            <a class="nav-link" href="../../pages/order/orderdetail.php">
+                                <button type="button" class="btn btn-primary btn-icon-text"> Detail </button>  
+                              </a> 
                             </td>
                             <td> RP 125.000 </td>
                             <td> 
@@ -457,13 +342,21 @@ if (!isset($_SESSION['username'])) {
                           <tr>
                             <td> 1 </td>
                             <td> May 15, 2015 </td>
-                            <td> <button type="button" class="btn btn-primary btn-icon-text"> Detail </button>  </td>
+                            <td>
+                            <a class="nav-link" href="../../pages/order/orderdetail.php">
+                                <button type="button" class="btn btn-primary btn-icon-text"> Detail </button>  
+                              </a> 
+                            </td>
                             <td> RP 250.000 </td>
                           </tr>
                           <tr>
                             <td> 2 </td>
                             <td> July 1, 2015 </td>
-                            <td> <button type="button" class="btn btn-primary btn-icon-text"> Detail </button>  </td>
+                            <td>
+                            <a class="nav-link" href="../../pages/order/orderdetail.php">
+                                <button type="button" class="btn btn-primary btn-icon-text"> Detail </button>  
+                              </a> 
+                            </td>
                             <td> RP 125.000 </td>
                           </tr>
                         </tbody>
