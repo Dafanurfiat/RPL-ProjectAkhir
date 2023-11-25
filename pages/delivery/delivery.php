@@ -227,7 +227,7 @@ if (!isset($_SESSION['username'])) {
                             <td style="size: 100px;"><i  class="mdi mdi-truck" style="font-size: 30px;"></i></td>
                             <td> 
                             <a class="nav-link" href="../../pages/order/orderdetail.php">
-                                <button type="button" class="btn btn-primary btn-icon-text"> Detail </button>  
+                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
                               </a>  
                             </td>
                             <td> May 15, 2020  </td>
@@ -239,7 +239,7 @@ if (!isset($_SESSION['username'])) {
                             <td> <i  class="mdi mdi-truck" style="font-size: 30px;"> </td>
                             <td> 
                             <a class="nav-link" href="../../pages/order/orderdetail.php">
-                                <button type="button" class="btn btn-primary btn-icon-text"> Detail </button>  
+                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
                               </a> 
                             </td>
                             <td> May 15, 2015 </td>

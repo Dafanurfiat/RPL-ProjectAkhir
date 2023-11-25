@@ -256,10 +256,10 @@ if (!isset($_SESSION['username'])) {
                       </table>
                       <footer class="footer">
                       <div class="d-grid gap-2 d-md-flex justify-content-md-end" >
-                            <button type="button" class="btn btn-success btn-icon-text">
-                            <i class="mdi mdi-checkbox-marked"></i> Order </button>
-                            <button type="button" class="btn btn-danger btn-icon-text">
-                            <i class="mdi mdi-close-box"></i> Cancel </button>
+                       <button type="button" class="btn btn-outline-success btn-icon-text">
+                       <i class="mdi mdi-checkbox-marked"></i> Order </button>
+                       <button type="button" class="btn btn-outline-danger btn-icon-text">
+                       <i class="mdi mdi-close-box"></i> Cancel </button>
                       </div>
                       </footer>
                     </div>
@@ -269,7 +269,7 @@ if (!isset($_SESSION['username'])) {
               <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">New Transaction</h4>
+                    <h4 class="card-title">Request Koki</h4>
                     <div class="table-responsive">
                       <table class="table table-dark">
                         <thead>
@@ -287,15 +287,15 @@ if (!isset($_SESSION['username'])) {
                             <td> May 15, 2015 </td>
                             <td> 
                               <a class="nav-link" href="../../pages/order/orderdetail.php">
-                                <button type="button" class="btn btn-primary btn-icon-text"> Detail </button>  
+                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
                               </a>
                               </td>
                             <td> RP 250.000 </td>
                             <td>
                             <div class="d-grid gap-2 d-md-flex justify-content-md-start" >
-                            <button type="button" class="btn btn-success btn-icon-text">
+                            <button type="button" class="btn btn-outline-success btn-icon-text">
                             <i class="mdi mdi-checkbox-marked"></i>Yes</button>
-                            <button type="button" class="btn btn-danger btn-icon-text">
+                            <button type="button" class="btn btn-outline-danger btn-icon-text">
                             <i class="mdi mdi-close-box"></i>No</button>
                             </div>
                             </td>
@@ -305,15 +305,15 @@ if (!isset($_SESSION['username'])) {
                             <td> July 1, 2015 </td>
                             <td>
                             <a class="nav-link" href="../../pages/order/orderdetail.php">
-                                <button type="button" class="btn btn-primary btn-icon-text"> Detail </button>  
+                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
                               </a> 
                             </td>
                             <td> RP 125.000 </td>
                             <td> 
                             <div class="d-grid gap-2 d-md-flex justify-content-md-start" >
-                            <button type="button" class="btn btn-success btn-icon-text">
+                            <button type="button" class="btn btn-outline-success btn-icon-text">
                             <i class="mdi mdi-checkbox-marked"></i>Yes</button>
-                            <button type="button" class="btn btn-danger btn-icon-text">
+                            <button type="button" class="btn btn-outline-danger btn-icon-text">
                             <i class="mdi mdi-close-box"></i>No</button>
                             </div>
                             </td>
@@ -324,7 +324,102 @@ if (!isset($_SESSION['username'])) {
                   </div>
                 </div>
               </div>
-              <div class="col-lg-12 grid-margin stretch-card">
+              <div class="col-lg-7 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Pending Transaction</h4>
+                    <div class="table-responsive">
+                      <table class="table table-dark">
+                        <thead>
+                          <tr>
+                            <th> No </th>
+                            <th> Date </th>
+                            <th> Detail Transaction </th>
+                            <th> Total Price </th>
+                            <th> Status </th>
+                            <th> Action </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td> 1 </td>
+                            <td> May 15, 2015 </td>
+                            <td> 
+                              <a class="nav-link" href="../../pages/order/orderdetail.php">
+                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
+                              </a>
+                              </td>
+                            <td> RP 250.000 </td>
+                            <td>
+                                <label class="badge badge-warning">On progress</label>
+                            </td>
+                            <td>
+                            <a class="nav-link" href="../../pages/order/orderdetail.php">
+                                <button type="button" class="btn btn-outline-danger btn-icon-text"> Delete </button>  
+                              </a> 
+                            </td>
+                          </tr>
+                          <tr>
+                            <td> 2 </td>
+                            <td> July 1, 2015 </td>
+                            <td>
+                            <a class="nav-link" href="../../pages/order/orderdetail.php">
+                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
+                              </a> 
+                            </td>
+                            <td> RP 125.000 </td>
+                            <td>
+                                <label class="badge badge-danger">Decline</label>
+                            </td>
+                            <td>
+                            <a class="nav-link" href="../../pages/order/orderdetail.php">
+                                <button type="button" class="btn btn-outline-danger btn-icon-text"> Delete </button>  
+                              </a> 
+                            </td>
+                          </tr>
+                          <tr>
+                            <td> 3 </td>
+                            <td> May 15, 2015 </td>
+                            <td> 
+                              <a class="nav-link" href="../../pages/order/orderdetail.php">
+                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
+                              </a>
+                              </td>
+                            <td> RP 250.000 </td>
+                            <td>
+                                <label class="badge badge-success">Accept</label>
+                            </td>
+                            <td>
+                            <a class="nav-link" href="../../pages/order/orderdetail.php">
+                                <button type="button" class="btn btn-outline-danger btn-icon-text"> Delete </button>  
+                              </a> 
+                            </td>
+                          </tr>
+                          <tr>
+                            <td> 4 </td>
+                            <td> May 15, 2015 </td>
+                            <td> 
+                              <a class="nav-link" href="../../pages/order/orderdetail.php">
+                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
+                              </a>
+                              </td>
+                            <td> RP 250.000 </td>
+                            <td>
+                                <label class="badge badge-primary">Pending</label>
+                            </td>
+                            <td>
+                            <a class="nav-link" href="../../pages/order/orderdetail.php">
+                                <button type="button" class="btn btn-outline-danger btn-icon-text"> Delete </button>  
+                              </a> 
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-5 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Transaction History</h4>
@@ -344,7 +439,7 @@ if (!isset($_SESSION['username'])) {
                             <td> May 15, 2015 </td>
                             <td>
                             <a class="nav-link" href="../../pages/order/orderdetail.php">
-                                <button type="button" class="btn btn-primary btn-icon-text"> Detail </button>  
+                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
                               </a> 
                             </td>
                             <td> RP 250.000 </td>
@@ -354,7 +449,7 @@ if (!isset($_SESSION['username'])) {
                             <td> July 1, 2015 </td>
                             <td>
                             <a class="nav-link" href="../../pages/order/orderdetail.php">
-                                <button type="button" class="btn btn-primary btn-icon-text"> Detail </button>  
+                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
                               </a> 
                             </td>
                             <td> RP 125.000 </td>

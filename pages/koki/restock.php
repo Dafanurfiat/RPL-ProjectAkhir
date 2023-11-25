@@ -239,7 +239,7 @@ if (!isset($_SESSION['username'])) {
                       </table>
                       <footer class="footer">
                       <div class="d-grid gap-2 d-md-flex justify-content-md-end" >
-                            <button type="button" class="btn btn-warning btn-icon-text">
+                            <button type="button" class="btn btn-outline-warning btn-icon-text">
                             <i class="mdi mdi-checkbox-marked"></i> Request </button>
                       </div>
                       </footer>
@@ -267,7 +267,7 @@ if (!isset($_SESSION['username'])) {
                             <td> May 15, 2015 </td>
                             <td>
                             <a class="nav-link" href="requestdetail.php">
-                                <button type="button" class="btn btn-primary btn-icon-text"> Detail </button>  
+                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
                               </a> 
                             </td>
                             <td> RP 250.000 </td>
@@ -277,7 +277,7 @@ if (!isset($_SESSION['username'])) {
                             <td> July 1, 2015 </td>
                             <td>
                             <a class="nav-link" href="requestdetail.php">
-                                <button type="button" class="btn btn-primary btn-icon-text"> Detail </button>  
+                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
                               </a> 
                             </td>
                             <td> RP 125.000 </td>
