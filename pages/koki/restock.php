@@ -188,65 +188,11 @@ if (!isset($_SESSION['username'])) {
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> ReStock </h3>
+            <a class="nav-link" href="ingredientrequesttable.php">
+                <button type="button" class="btn btn-outline-success btn-icon-text"> <i class="mdi mdi-plus" ></i> Request Ingredient </button>  
+              </a> 
             </div>
             <div class="row">
-            <div class="col-lg-12 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
-                    <h4 class="card-title">Ingredient Request Table</h4>
-                    <div class="table-responsive">
-                      <table class="table">
-                        <thead>
-                          <tr>
-                            <th>No</th>
-                            <th>Picture</th>
-                            <th>Ingredients</th>
-                            <th>Amount/g</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>
-                              1
-                            </td>
-                            <td><img src="../../assets/images/cabai.png" style=" width:50px; height:50px;"alt="logo" /></td>
-                            <td>Cabai</td>
-                            <td>
-                              <div class="form-outline" data-mdb-input-init >
-                                  <label class="form-label" for="typeNumber" ></label>
-                                  <input type="number" id="typeNumber" class="form-control" style="background-color: white; color:black; width: 70px; height: 30px;" value="0" min="0"/>
-                                </div>
-                              </label>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              2
-                            </td>
-                            <td><img src="../../assets/images/bawang-merah.png" style=" width:50px; height:50px;"alt="logo" /></td>
-                            <td>Bawang Merah</td>
-                            <td>
-                              <div class="form-outline" data-mdb-input-init >
-                                  <label class="form-label" for="typeNumber" ></label>
-                                  <input type="number" id="typeNumber" class="form-control" style="background-color: white; color:black; width: 70px; height: 30px;" value="0" min="0"/>
-                                </div>
-                              </label>
-                            </td>
-                          </tr>
-                          <tr>
-                        </tbody>
-                      </table>
-                      <footer class="footer">
-                      <div class="d-grid gap-2 d-md-flex justify-content-md-end" >
-                            <button type="button" class="btn btn-outline-warning btn-icon-text">
-                            <i class="mdi mdi-checkbox-marked"></i> Request </button>
-                      </div>
-                      </footer>
-                    </div>
-                  </div>
-                </div>
-              </div>
               <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">

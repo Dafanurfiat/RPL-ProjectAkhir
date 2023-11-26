@@ -206,6 +206,7 @@ if (!isset($_SESSION['username'])) {
                             <th>Picture</th>
                             <th>Menu</th>
                             <th>Amount</th>
+                            <th>Price</th>
                             <th>Ingridients</th>
                           </tr>
                         </thead>
@@ -220,6 +221,7 @@ if (!isset($_SESSION['username'])) {
                                         <input type="number" id="typeNumber1" class="form-control" style="background-color: white; color:black; width: 70px; height: 30px;" value="0" min="0" />
                                     </div>
                                 </td>
+                                <td>Rp 15.000</td>
                                 <td>
                                     <li>
                                         <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic1">
@@ -245,6 +247,7 @@ if (!isset($_SESSION['username'])) {
                                         <input type="number" id="typeNumber2" class="form-control" style="background-color: white; color:black; width: 70px; height: 30px;" value="0" min="0" />
                                     </div>
                                 </td>
+                                <td>Rp 15.000</td>
                                 <td>
                                     <li>
                                         <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic2" aria-expanded="false" aria-controls="ui-basic2">

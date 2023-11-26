@@ -204,6 +204,7 @@ if (!isset($_SESSION['username'])) {
                           <tr>
                             <th> No </th>
                             <th> Date </th>
+                            <th> Total Price </th>
                             <th> Ingredient Usage Details </th>
                           </tr>
                         </thead>
@@ -211,6 +212,7 @@ if (!isset($_SESSION['username'])) {
                           <tr>
                             <td> 1 </td>
                             <td> May 15, 2015 </td>
+                            <td> Rp 500.000 </td>
                             <td>
                             <a class="nav-link" href="detailusageproduct.php">
                                 <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
@@ -220,6 +222,7 @@ if (!isset($_SESSION['username'])) {
                           <tr>
                             <td> 2 </td>
                             <td> July 1, 2015 </td>
+                            <td> Rp 1.000.000 </td>
                             <td>
                             <a class="nav-link" href="detailusageproduct.php">
                                 <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
