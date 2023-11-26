@@ -15,7 +15,7 @@ if (!isset($_SESSION['username'])) {
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Corona Admin</title>
+    <title>Tenda Biru</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
@@ -27,7 +27,7 @@ if (!isset($_SESSION['username'])) {
     <!-- Layout styles -->
     <link rel="stylesheet" href="../../assets/css/style.css">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="../../assets/images/favicon.png" />
+    <link rel="shortcut icon" href="../../assets/images/TendaBiru.png" />
   </head>
   <body>
     <div class="container-scroller">
@@ -74,7 +74,7 @@ if (!isset($_SESSION['username'])) {
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="usagekoki.php">
+            <a class="nav-link" href="detailusageproduct.php">
               <span class="menu-icon">
                 <i class="mdi mdi-cube"></i>
               </span>
@@ -196,7 +196,7 @@ if (!isset($_SESSION['username'])) {
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Menu Usage Details</h4>
+                    <h4 class="card-title">Ingredient Usage Details</h4>
                     <div class="table-responsive">
                       <table class="table">
                         <thead>

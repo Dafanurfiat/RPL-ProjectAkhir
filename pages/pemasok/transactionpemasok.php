@@ -15,7 +15,7 @@ if (!isset($_SESSION['username'])) {
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Corona Admin</title>
+    <title>Tenda Biru</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
@@ -27,7 +27,7 @@ if (!isset($_SESSION['username'])) {
     <!-- Layout styles -->
     <link rel="stylesheet" href="../../assets/css/style.css">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="../../assets/images/favicon.png" />
+    <link rel="shortcut icon" href="../../assets/images/TendaBiru.png" />
   </head>
   <body>
     <div class="container-scroller">
@@ -71,6 +71,14 @@ if (!isset($_SESSION['username'])) {
                 <i class="mdi mdi-file-plus"></i>
               </span>
               <span class="menu-title">Transaction</span>
+            </a>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="deliverypemasok.php">
+              <span class="menu-icon">
+                <i class="mdi mdi-truck"></i>
+              </span>
+              <span class="menu-title">Delivery</span>
             </a>
           </li>
         </ul>
@@ -176,7 +184,7 @@ if (!isset($_SESSION['username'])) {
               <h3 class="page-title"> Transaction </h3>
             </div>
             <div class="row">
-              <div class="col-lg-12 grid-margin stretch-card">
+              <div class="col-lg-7 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Transaction</h4>
@@ -196,7 +204,7 @@ if (!isset($_SESSION['username'])) {
                             <td> 1 </td>
                             <td> May 15, 2015 </td>
                             <td> 
-                              <a class="nav-link" href="../../pages/order/orderdetail.php">
+                              <a class="nav-link" href="transactiondetail.php">
                                 <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
                               </a>
                               </td>
@@ -214,7 +222,7 @@ if (!isset($_SESSION['username'])) {
                             <td> 2 </td>
                             <td> July 1, 2015 </td>
                             <td>
-                            <a class="nav-link" href="../../pages/order/orderdetail.php">
+                            <a class="nav-link" href="transactiondetail.php">
                                 <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
                               </a> 
                             </td>
@@ -227,6 +235,47 @@ if (!isset($_SESSION['username'])) {
                             <i class="mdi mdi-close-box"></i>Decline</button>
                             </div>
                             </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-5 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Transaction History</h4>
+                    <div class="table-responsive">
+                      <table class="table table-dark">
+                        <thead>
+                          <tr>
+                            <th> No </th>
+                            <th> Date </th>
+                            <th> Transaction details </th>
+                            <th> Total Price </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td> 1 </td>
+                            <td> May 15, 2015 </td>
+                            <td>
+                            <a class="nav-link" href="transactiondetail.php">
+                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
+                              </a> 
+                            </td>
+                            <td> RP 250.000 </td>
+                          </tr>
+                          <tr>
+                            <td> 2 </td>
+                            <td> July 1, 2015 </td>
+                            <td>
+                            <a class="nav-link" href="transactiondetail.php">
+                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
+                              </a> 
+                            </td>
+                            <td> RP 125.000 </td>
                           </tr>
                         </tbody>
                       </table>
