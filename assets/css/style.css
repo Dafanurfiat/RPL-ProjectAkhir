@@ -19910,6 +19910,10 @@ div.tagsinput {
   background: url("../images/auth/lockscreen-bg.jpg");
   background-size: cover; }
 
+.auth .tree-bg {
+    background: url("..\images\auth\tree-bg.jpg");
+    background-size: cover; }
+
 .auth .lock-profile-img {
   width: 90px;
   height: 90px;
