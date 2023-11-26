@@ -1,5 +1,6 @@
 <?php
 include '../../config.php';
+require '../functions.php';
 session_start();
 
  
