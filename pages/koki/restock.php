@@ -4,7 +4,7 @@ session_start();
 
  
 if (!isset($_SESSION['username'])) {
-    header("Location: indexkoki.php");
+    header("Location: ../../login.php");
     exit(); // Terminate script execution after the redirect
 }
 ?>
@@ -34,8 +34,8 @@ if (!isset($_SESSION['username'])) {
         <!-- partial:partials/_sidebar.html -->
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
             <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-                <a class="sidebar-brand brand-logo" href="../../indexkoki.php" style="color: #659DBD;"><h1>Tenda Biru</h1></a>
-              <a class="sidebar-brand brand-logo-mini" href="../../indexkoki.php"><img src="../../assets/images/TendaBiru.png" alt="logo" /></a>
+                <a class="sidebar-brand brand-logo" href="dashboardkoki.php" style="color: #659DBD;"><h1>Tenda Biru</h1></a>
+              <a class="sidebar-brand brand-logo-mini" href="dashboardkoki.php"><img src="../../assets/images/TendaBiru.png" alt="logo" /></a>
             </div>
             <ul class="nav">
                 <li class="nav-item profile">
@@ -58,7 +58,7 @@ if (!isset($_SESSION['username'])) {
             <span class="nav-link">Navigation</span>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="../../indexkoki.php">
+            <a class="nav-link" href="dashboardkoki.php">
               <span class="menu-icon">
                 <i class="mdi mdi-home-variant"></i>
               </span>
@@ -95,7 +95,7 @@ if (!isset($_SESSION['username'])) {
         <!-- partial:../../partials/_navbar.html -->
         <nav class="navbar p-0 fixed-top d-flex flex-row">
           <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
-            <a class="navbar-brand brand-logo-mini" href="../../indexkoki.php"><img src="../../assets/images/logo-mini.svg" alt="logo" /></a>
+            <a class="navbar-brand brand-logo-mini" href="dashboardkoki.php"><img src="../../assets/images/logo-mini.svg" alt="logo" /></a>
           </div>
           <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
             <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
