@@ -205,67 +205,11 @@ if (!isset($_SESSION['username'])) {
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Order </h3>
+            <a class="nav-link" href="ordertable.php">
+                <button type="button" class="btn btn-outline-success btn-icon-text"> <i class="mdi mdi-plus" ></i> Order Ingredient </button>  
+              </a> 
             </div>
             <div class="row">
-              <div class="col-lg-12 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
-                    <h4 class="card-title">Table Order</h4>
-                    <div class="table-responsive">
-                      <table class="table">
-                        <thead>
-                          <tr>
-                            <th>No</th>
-                            <th>Picture</th>
-                            <th>Ingredients</th>
-                            <th>Amount/g</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>
-                              1
-                            </td>
-                            <td><img src="../../assets/images/cabai.png" style=" width:50px; height:50px;"alt="logo" /></td>
-                            <td>Cabai</td>
-                            <td>
-                              <div class="form-outline" data-mdb-input-init >
-                                  <label class="form-label" for="typeNumber" ></label>
-                                  <input type="number" id="typeNumber" class="form-control" style="background-color: white; color:black; width: 70px; height: 30px;" value="0" min="0"/>
-                                </div>
-                              </label>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              2
-                            </td>
-                            <td><img src="../../assets/images/bawang-merah.png" style=" width:50px; height:50px;"alt="logo" /></td>
-                            <td>Bawang Merah</td>
-                            <td>
-                              <div class="form-outline" data-mdb-input-init >
-                                  <label class="form-label" for="typeNumber" ></label>
-                                  <input type="number" id="typeNumber" class="form-control" style="background-color: white; color:black; width: 70px; height: 30px;" value="0" min="0"/>
-                                </div>
-                              </label>
-                            </td>
-                          </tr>
-                          <tr>
-                        </tbody>
-                      </table>
-                      <footer class="footer">
-                      <div class="d-grid gap-2 d-md-flex justify-content-md-end" >
-                       <button type="button" class="btn btn-outline-success btn-icon-text">
-                       <i class="mdi mdi-checkbox-marked"></i> Order </button>
-                       <button type="button" class="btn btn-outline-danger btn-icon-text">
-                       <i class="mdi mdi-close-box"></i> Cancel </button>
-                      </div>
-                      </footer>
-                    </div>
-                  </div>
-                </div>
-              </div>
               <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
@@ -324,10 +268,10 @@ if (!isset($_SESSION['username'])) {
                   </div>
                 </div>
               </div>
-              <div class="col-lg-7 grid-margin stretch-card">
+              <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Pending Transaction</h4>
+                    <h4 class="card-title">Transaction History</h4>
                     <div class="table-responsive">
                       <table class="table table-dark">
                         <thead>
@@ -404,47 +348,6 @@ if (!isset($_SESSION['username'])) {
                             <td>
                                 <button type="button" class="btn btn-outline-danger btn-icon-text"> Delete </button>  
                             </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-5 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
-                    <h4 class="card-title">Transaction History</h4>
-                    <div class="table-responsive">
-                      <table class="table table-dark">
-                        <thead>
-                          <tr>
-                            <th> No </th>
-                            <th> Date </th>
-                            <th> Transaction details </th>
-                            <th> Total Price </th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td> 1 </td>
-                            <td> May 15, 2015 </td>
-                            <td>
-                            <a class="nav-link" href="orderdetail.php">
-                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
-                              </a> 
-                            </td>
-                            <td> RP 250.000 </td>
-                          </tr>
-                          <tr>
-                            <td> 2 </td>
-                            <td> July 1, 2015 </td>
-                            <td>
-                            <a class="nav-link" href="orderdetail.php">
-                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
-                              </a> 
-                            </td>
-                            <td> RP 125.000 </td>
                           </tr>
                         </tbody>
                       </table>
