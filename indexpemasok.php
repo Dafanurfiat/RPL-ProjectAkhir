@@ -185,39 +185,30 @@ if (!isset($_SESSION['username'])) {
               <h3 class="page-title"> Dashboard </h3>
             </div>
             <div class="row">
-            <div class="col-lg-12 grid-margin stretch-card">
+              <div class="col-lg-6 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Transaction</h4>
+                    <h4 class="card-title">Transaction History</h4>
                     <div class="table-responsive">
                       <table class="table table-dark">
                         <thead>
                           <tr>
                             <th> No </th>
                             <th> Date </th>
-                            <th> Transaction Details </th>
+                            <th> Transaction details </th>
                             <th> Total Price </th>
-                            <th> Action </th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr>
                             <td> 1 </td>
                             <td> May 15, 2015 </td>
-                            <td> 
-                              <a class="nav-link" href="pages/pemasok/transactiondetail.php">
-                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
-                              </a>
-                              </td>
-                            <td> RP 250.000 </td>
                             <td>
-                            <div class="d-grid gap-2 d-md-flex justify-content-md-start" >
-                            <button type="button" class="btn btn-outline-success btn-icon-text">
-                            <i class="mdi mdi-checkbox-marked"></i>Accept</button>
-                            <button type="button" class="btn btn-outline-danger btn-icon-text">
-                            <i class="mdi mdi-close-box"></i>Decline</button>
-                            </div>
+                            <a class="nav-link" href="pages/pemasok/transactiondetail.php">
+                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
+                              </a> 
                             </td>
+                            <td> RP 250.000 </td>
                           </tr>
                           <tr>
                             <td> 2 </td>
@@ -228,13 +219,43 @@ if (!isset($_SESSION['username'])) {
                               </a> 
                             </td>
                             <td> RP 125.000 </td>
-                            <td> 
-                            <div class="d-grid gap-2 d-md-flex justify-content-md-start" >
-                            <button type="button" class="btn btn-outline-success btn-icon-text">
-                            <i class="mdi mdi-checkbox-marked"></i>Accept</button>
-                            <button type="button" class="btn btn-outline-danger btn-icon-text">
-                            <i class="mdi mdi-close-box"></i>Decline</button>
-                            </div>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Shipment History</h4>
+                    <div class="table-responsive">
+                      <table class="table table-dark">
+                        <thead>
+                          <tr>
+                            <th> No </th>
+                            <th> Date </th>
+                            <th> Transaction details </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td> 1 </td>
+                            <td> May 15, 2015 </td>
+                            <td>
+                            <a class="nav-link" href="pages/pemasok/detaildelivery.php">
+                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
+                              </a> 
+                            </td>
+                          </tr>
+                          <tr>
+                            <td> 2 </td>
+                            <td> July 1, 2015 </td>
+                            <td>
+                            <a class="nav-link" href="pages/pemasok/detaildelivery.php">
+                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
+                              </a> 
                             </td>
                           </tr>
                         </tbody>
@@ -243,6 +264,7 @@ if (!isset($_SESSION['username'])) {
                   </div>
                 </div>
               </div>
+
           <footer class="footer">
           </footer>
             </div>
