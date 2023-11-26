@@ -1,12 +1,17 @@
 <?php
 include '../../config.php';
+require 'functions.php';
 session_start();
 
  
 if (!isset($_SESSION['username'])) {
     header("Location: ../../login.php");
     exit(); // Terminate script execution after the redirect
+
 }
+$id = $_GET["id"];
+$dtransaksi = read_detail_data($id);
+$transaksi = read_data("SELECT * FROM transaksi WHERE idTransaksi=$id");
 ?>
 
 <!DOCTYPE html>
@@ -31,34 +36,34 @@ if (!isset($_SESSION['username'])) {
   </head>
   <body>
     <div class="container-scroller">
-        <!-- partial:partials/_sidebar.html -->
-        <nav class="sidebar sidebar-offcanvas" id="sidebar">
-            <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-                <a class="sidebar-brand brand-logo" href="dashboardkoki.php" style="color: #659DBD;"><h1>Tenda Biru</h1></a>
-              <a class="sidebar-brand brand-logo-mini" href="dashboardkoki.php"><img src="../../assets/images/TendaBiru.png" alt="logo" /></a>
+      <!-- partial:../../partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
+            <a class="sidebar-brand brand-logo" href="../../index.php" style="color: #659DBD;"><h1>Tenda Biru</h1></a>
+          <a class="sidebar-brand brand-logo-mini" href="../../index.php"><img src="../../assets/images/TendaBiru.png" alt="logo" /></a>
+        </div>
+        <ul class="nav">
+          <li class="nav-item profile">
+            <div class="profile-desc">
+              <div class="profile-pic">
+                <div class="count-indicator">
+                  <img class="img-xs rounded-circle " src="../../assets/images/faces/face15.jpg" alt="">
+                  <span class="count bg-success"></span>
+                </div>
+                <div class="profile-name">
+                  <h5 class="mb-0 font-weight-normal"><?php echo $_SESSION['username']; ?></h5>
+                  <span>Manager</span>
+                </div>
+              </div>
+              <div class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list" aria-labelledby="profile-dropdown">
+              </div>
             </div>
-            <ul class="nav">
-                <li class="nav-item profile">
-                    <div class="profile-desc">
-                      <div class="profile-pic">
-                        <div class="count-indicator">
-                          <img class="img-xs rounded-circle " src="../../assets/images/faces/face15.jpg" alt="">
-                          <span class="count bg-success"></span>
-                        </div>
-                        <div class="profile-name">
-                          <h5 class="mb-0 font-weight-normal"><?php echo $_SESSION['username']; ?></h5>
-                          <span>Koki</span>
-                        </div>
-                      </div>
-                      <div class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list" aria-labelledby="profile-dropdown">
-                      </div>
-                    </div>
-                  </li>
+          </li>
           <li class="nav-item nav-category">
             <span class="nav-link">Navigation</span>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="dashboardkoki.php">
+            <a class="nav-link" href="dashboard.php">
               <span class="menu-icon">
                 <i class="mdi mdi-home-variant"></i>
               </span>
@@ -66,7 +71,7 @@ if (!isset($_SESSION['username'])) {
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="stockkoki.php">
+            <a class="nav-link" href="stock.php">
               <span class="menu-icon">
                 <i class="mdi mdi-package-variant-closed"></i>
               </span>
@@ -74,21 +79,37 @@ if (!isset($_SESSION['username'])) {
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="usagekoki.php">
+            <a class="nav-link" href="orderdetail.php">
               <span class="menu-icon">
-                <i class="mdi mdi-cube"></i>
+                <i class="mdi mdi-file-document"></i>
               </span>
-              <span class="menu-title">Usage</span>
+              <span class="menu-title">Order</span>
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="requestdetail.php">
+            <a class="nav-link" href="staff.php">
               <span class="menu-icon">
-                <i class="mdi mdi-window-restore"></i>
+                <i class="mdi mdi-account"></i>
               </span>
-              <span class="menu-title">ReStock</span>
+              <span class="menu-title">Staff</span>
             </a>
-          </i>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="delivery.php">
+              <span class="menu-icon">
+                <i class="mdi mdi-truck"></i>
+              </span>
+              <span class="menu-title">Delivery</span>
+            </a>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="report.php">
+              <span class="menu-icon">
+                <i class="mdi mdi-chart-bar"></i>
+              </span>
+              <span class="menu-title">Report</span>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- partial -->
@@ -96,7 +117,7 @@ if (!isset($_SESSION['username'])) {
         <!-- partial:../../partials/_navbar.html -->
         <nav class="navbar p-0 fixed-top d-flex flex-row">
           <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
-            <a class="navbar-brand brand-logo-mini" href="dashboardkoki.php"><img src="../../assets/images/logo-mini.svg" alt="logo" /></a>
+            <a class="navbar-brand brand-logo-mini" href="../../index.php"><img src="../../assets/images/logo-mini.svg" alt="logo" /></a>
           </div>
           <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
             <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -194,37 +215,41 @@ if (!isset($_SESSION['username'])) {
               </a> 
             </div>
             <div class="row">
-            <div class="col-lg-12 grid-margin stretch-card">
+              <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Request Detail History</h4>
+
+
+                    <h4 class="card-title">Transaction Details</h4>
                     <div class="table-responsive">
                       <table class="table">
                         <thead>
                           <tr>
                             <th>No</th>
-                            <th>Product</th>
+                            <th>Ingredients</th>
                             <th>Amount/g</th>
                             <th>Price</th>
                           </tr>
                         </thead>
                         <tbody>
+                          <?php $no = 1 ?>
+                          <?php foreach ($dtransaksi as $dtrs) : ?>
                           <tr>
                             <td>
-                              1
+                              <?= $no ?>
                             </td>
-                            <td> Cabai </td>
-                            <td> 5 g </td>
-                            <td> Rp 25.000 </td>
-                          </tr>
-                          <tr>
                             <td>
-                              2
+                              <?= $dtrs["namaBarang"] ?>
                             </td>
-                            <td>Bawang Merah</td>
-                            <td> 10 g </td>
-                            <td> Rp 55.000 </td>
+                            <td>
+                              <?= $dtrs["jumlahBarang"] * 100; ?>
+                            </td>
+                            <td>
+                              <?= cariHarga($dtrs["idBarang"]) ?>
+                            </td>
                           </tr>
+                          <?php $no++ ?>
+                          <?php endforeach; ?>
                         </tbody>
                       </table>
                     </div>
