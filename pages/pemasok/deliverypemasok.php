@@ -232,8 +232,10 @@ $statusclass = ["0"=>"badge badge-grey",
                             </td>
                             <td>
                               <div class="d-grid gap-2 d-md-flex justify-content-md-start" >
-                                <button type="button" class="btn btn-outline-success btn-icon-text">
-                                <i class="mdi mdi-checkbox-marked"></i>Arrived</button>
+                                <a href="deliverd.php?id=<?= $trs["idTransaksi"]?>">
+                                  <button type="button" class="btn btn-outline-success btn-icon-text">
+                                  <i class="mdi mdi-checkbox-marked"></i>Arrived</button>
+                                </a>
                               </div>
                             </td>
                           </tr>
