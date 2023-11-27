@@ -1,5 +1,5 @@
 <?php
-include '../../config.php';
+require 'functions.php';
 session_start();
 
  
@@ -7,7 +7,27 @@ if (!isset($_SESSION['username'])) {
     header("Location: ../../login.php");
     exit(); // Terminate script execution after the redirect
 }
+
+$reqtransaksi = read_data("SELECT * 
+              FROM transaksi 
+              WHERE
+              statusReq=0 AND 
+              status IN (0,1,2,3,4) AND
+              isKokiReq=1");
+$riwayattransaksi = read_data("SELECT *
+                  FROM transaksi
+                  WHERE
+                  statusReq=1 AND
+                  status IN (0,1,2,3,4)");
+$statusReq = ["0"=>"Pending", "1"=>"Accept", "2"=>"Decline"];
+$status = ["0"=>"Unapprove", "1"=>"Pending", "2"=>"OnProgress", "3"=>"Done", "4"=>"Decline"];
+$statusclass = ["0"=>"badge badge-grey", 
+                "1"=>"badge badge-grey", 
+                "2"=>"badge badge-warning", 
+                "3"=>"badge badge-success", 
+                "4"=>"badge badge-danger"];
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -214,6 +234,10 @@ if (!isset($_SESSION['username'])) {
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Request Koki</h4>
+
+
+
+
                     <div class="table-responsive">
                       <table class="table table-dark">
                         <thead>
@@ -226,45 +250,45 @@ if (!isset($_SESSION['username'])) {
                           </tr>
                         </thead>
                         <tbody>
+                          <?php $no = 1 ?>
+                          <?php foreach ($reqtransaksi as $trs) : ?>
                           <tr>
-                            <td> 1 </td>
-                            <td> May 15, 2015 </td>
+                            <td>
+                              <?= $no ?>
+                            </td>
+                            <td>
+                              <?= $trs["tanggalTransaksi"] ?>
+                            </td>
                             <td> 
-                              <a class="nav-link" href="orderdetail.php">
+                              <a class="nav-link" href="orderdetail.php?id=<?= $trs["idTransaksi"]?>">
                                 <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
                               </a>
                               </td>
-                            <td> RP 250.000 </td>
+                            <td><?= $trs["totalHarga"]; ?></td>
                             <td>
-                            <div class="d-grid gap-2 d-md-flex justify-content-md-start" >
-                            <button type="button" class="btn btn-outline-success btn-icon-text">
-                            <i class="mdi mdi-checkbox-marked"></i>Yes</button>
-                            <button type="button" class="btn btn-outline-danger btn-icon-text">
-                            <i class="mdi mdi-close-box"></i>No</button>
-                            </div>
+                              <div class="d-grid gap-2 d-md-flex justify-content-md-start" >
+                                <a href="approve.php?id=<?= $trs["idTransaksi"]?>">
+                                  <button type="button" class="btn btn-outline-success btn-icon-text">
+                                    <i class="mdi mdi-checkbox-marked"></i>Yes
+                                  </button> 
+                                </a>
+                                <a href="decline.php?id=<?= $trs["idTransaksi"]?>">
+                                  <button type="button" class="btn btn-outline-danger btn-icon-text">
+                                    <i class="mdi mdi-close-box"></i>No
+                                  </button>  
+                                </a>
+                              </div>
                             </td>
                           </tr>
-                          <tr>
-                            <td> 2 </td>
-                            <td> July 1, 2015 </td>
-                            <td>
-                            <a class="nav-link" href="orderdetail.php">
-                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
-                              </a> 
-                            </td>
-                            <td> RP 125.000 </td>
-                            <td> 
-                            <div class="d-grid gap-2 d-md-flex justify-content-md-start" >
-                            <button type="button" class="btn btn-outline-success btn-icon-text">
-                            <i class="mdi mdi-checkbox-marked"></i>Yes</button>
-                            <button type="button" class="btn btn-outline-danger btn-icon-text">
-                            <i class="mdi mdi-close-box"></i>No</button>
-                            </div>
-                            </td>
-                          </tr>
+                          <?php $no++ ?>
+                          <?php endforeach; ?>
                         </tbody>
                       </table>
                     </div>
+
+
+
+
                   </div>
                 </div>
               </div>
@@ -285,70 +309,32 @@ if (!isset($_SESSION['username'])) {
                           </tr>
                         </thead>
                         <tbody>
+                          <?php $no = 1 ?>
+                          <?php foreach ($riwayattransaksi as $trs) : ?>
                           <tr>
-                            <td> 1 </td>
-                            <td> May 15, 2015 </td>
+                            <td>
+                              <?= $no ?>
+                            </td>
+                            <td>
+                              <?= $trs["tanggalTransaksi"] ?>
+                            </td>
                             <td> 
-                              <a class="nav-link" href="orderdetail.php">
+                              <a class="nav-link" href="orderdetail.php?id=<?= $trs["idTransaksi"]?>">
                                 <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
                               </a>
-                              </td>
-                            <td> RP 250.000 </td>
+                            </td>
                             <td>
-                                <label class="badge badge-warning">On progress</label>
+                              <?= $trs["totalHarga"]; ?>
+                            </td>
+                            <td>
+                                <label class="<?= $statusclass[$trs['status']] ?>"><?= $status[$trs["status"]] ?></label>
                             </td>
                             <td>
                                 <button type="button" class="btn btn-outline-danger btn-icon-text"> Delete </button>  
                             </td>
                           </tr>
-                          <tr>
-                            <td> 2 </td>
-                            <td> July 1, 2015 </td>
-                            <td>
-                            <a class="nav-link" href="orderdetail.php">
-                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
-                              </a> 
-                            </td>
-                            <td> RP 125.000 </td>
-                            <td>
-                                <label class="badge badge-danger">Decline</label>
-                            </td>
-                            <td>
-                                <button type="button" class="btn btn-outline-danger btn-icon-text"> Delete </button>  
-                            </td>
-                          </tr>
-                          <tr>
-                            <td> 3 </td>
-                            <td> May 15, 2015 </td>
-                            <td> 
-                              <a class="nav-link" href="orderdetail.php">
-                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
-                              </a>
-                              </td>
-                            <td> RP 250.000 </td>
-                            <td>
-                                <label class="badge badge-success">Accept</label>
-                            </td>
-                            <td>
-                                <button type="button" class="btn btn-outline-danger btn-icon-text"> Delete </button>  
-                            </td>
-                          </tr>
-                          <tr>
-                            <td> 4 </td>
-                            <td> May 15, 2015 </td>
-                            <td> 
-                              <a class="nav-link" href="orderdetail.php">
-                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
-                              </a>
-                              </td>
-                            <td> RP 250.000 </td>
-                            <td>
-                                <label class="badge badge-primary">Pending</label>
-                            </td>
-                            <td>
-                                <button type="button" class="btn btn-outline-danger btn-icon-text"> Delete </button>  
-                            </td>
-                          </tr>
+                          <?php $no++ ?>
+                          <?php endforeach; ?>
                         </tbody>
                       </table>
                     </div>

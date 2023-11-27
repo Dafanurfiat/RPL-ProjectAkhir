@@ -1,5 +1,6 @@
 <?php
 include '../../config.php';
+require 'functions.php';
 session_start();
 
  
@@ -7,6 +8,22 @@ if (!isset($_SESSION['username'])) {
     header("Location: ../../login.php");
     exit(); // Terminate script execution after the redirect
 }
+
+$transaksi = read_data("SELECT * 
+              FROM transaksi 
+              WHERE 
+              status IN (0,1,2,3,4) AND
+              isKokiReq=1");
+$statusReq = ["0"=>"Pending", "1"=>"Accept", "2"=>"Decline"];
+$status = ["0"=>"Unapprove", "1"=>"Pending", "2"=>"OnProgress", "3"=>"Done", "4"=>"Decline"];
+$statusreqclass = ["0"=>"badge badge-grey", 
+                "1"=>"badge badge-success", 
+                "2"=>"badge badge-danger"];
+$statusclass = ["0"=>"badge badge-grey", 
+                "1"=>"badge badge-primary", 
+                "2"=>"badge badge-warning", 
+                "3"=>"badge badge-success", 
+                "4"=>"badge badge-danger"];
 ?>
 
 <!DOCTYPE html>
@@ -205,29 +222,37 @@ if (!isset($_SESSION['username'])) {
                             <th> Date </th>
                             <th> Request Details </th>
                             <th> Total Price </th>
+                            <th>Status Persetujuan</th>
+                            <th>Status Pengiriman</th>
                           </tr>
                         </thead>
                         <tbody>
+                          <?php $no = 1 ?>
+                          <?php foreach ($transaksi as $trs) : ?>
                           <tr>
-                            <td> 1 </td>
-                            <td> May 15, 2015 </td>
                             <td>
-                            <a class="nav-link" href="requestdetail.php">
-                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
-                              </a> 
+                              <?= $no ?>
                             </td>
-                            <td> RP 250.000 </td>
-                          </tr>
-                          <tr>
-                            <td> 2 </td>
-                            <td> July 1, 2015 </td>
                             <td>
-                            <a class="nav-link" href="requestdetail.php">
-                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
-                              </a> 
+                              <?= $trs["tanggalTransaksi"] ?>
                             </td>
-                            <td> RP 125.000 </td>
+                            <td>
+                              <a class="nav-link" href="requestdetail.php?id=<?= $trs["idTransaksi"]?>">
+                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
+                              </a>
+                            </td>
+                            <td>
+                              <?= $trs["totalHarga"]; ?>
+                            </td>
+                            <td>
+                              <label class="<?= $statusreqclass[$trs['statusReq']] ?>"><?= $statusReq[$trs["statusReq"]] ?></label>
+                            </td>
+                            <td>
+                              <label class="<?= $statusclass[$trs['status']] ?>"><?= $status[$trs["status"]] ?></label>
+                            </td>
                           </tr>
+                          <?php $no++ ?>
+                          <?php endforeach; ?>
                         </tbody>
                       </table>
                     </div>

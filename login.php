@@ -1,5 +1,5 @@
 <?php
-include 'config.php';
+require 'config.php';
 session_start();
  
 
@@ -25,6 +25,8 @@ if (isset($_POST['submit'])) {
       } elseif ($roles == 'staff') {
           header("Location: index copy.html");
           exit();
+      } elseif ($roles == 'koki') {
+          header("Location: pages/koki/dashboardkoki.php");
       } else {
           echo "PEMAI deng ngana";
       }

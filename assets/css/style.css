@@ -16408,6 +16408,10 @@ code {
   background: #0d0d0d;
   color: #ffffff; }
 
+.badge-grey {
+  background: grey;
+  color: #ffffff; }
+
 /*Badge outlined variations*/
 .badge-outline-primary {
   color: #0090e7;
