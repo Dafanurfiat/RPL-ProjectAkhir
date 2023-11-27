@@ -21,8 +21,8 @@ $riwayattransaksi = read_data("SELECT *
                   status IN (0,1,2,3,4)");
 $statusReq = ["0"=>"Pending", "1"=>"Accept", "2"=>"Decline"];
 $status = ["0"=>"Unapprove", "1"=>"Pending", "2"=>"OnProgress", "3"=>"Done", "4"=>"Decline"];
-$statusclass = ["0"=>"badge badge-light", 
-                "1"=>"badge badge-primary", 
+$statusclass = ["0"=>"badge badge-grey", 
+                "1"=>"badge badge-grey", 
                 "2"=>"badge badge-warning", 
                 "3"=>"badge badge-success", 
                 "4"=>"badge badge-danger"];
