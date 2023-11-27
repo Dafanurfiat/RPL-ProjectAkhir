@@ -27,6 +27,8 @@ if (isset($_POST['submit'])) {
           exit();
       } elseif ($roles == 'koki') {
           header("Location: pages/koki/dashboardkoki.php");
+      } elseif ($roles == 'pemasok'){
+          header("Location: pages/pemasok/dashboardpemasok.php");
       } else {
           echo "PEMAI deng ngana";
       }
