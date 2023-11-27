@@ -7,6 +7,10 @@ if (!isset($_SESSION['username'])) {
     header("Location: ../../login.php");
     exit(); // Terminate script execution after the redirect
 }
+require "functions.php";
+$id = $_GET["id"];
+$dtransaksi = read_detail_data($id);
+$transaksi = read_data("SELECT * FROM transaksi WHERE idTransaksi=$id");
 ?>
 
 <!DOCTYPE html>
@@ -201,22 +205,24 @@ if (!isset($_SESSION['username'])) {
                           </tr>
                         </thead>
                         <tbody>
+                          <?php $no = 1 ?>
+                          <?php foreach ($dtransaksi as $dtrs) : ?>
                           <tr>
                             <td>
-                              1
+                              <?= $no ?>
                             </td>
-                            <td> Cabai </td>
-                            <td> 5 g </td>
-                            <td> Rp 11.000 </td>
-                          </tr>
-                          <tr>
                             <td>
-                              2
+                              <?= $dtrs["namaBarang"] ?>
                             </td>
-                            <td>Bawang Merah</td>
-                            <td> 10 g </td>
-                            <td> Rp 6.000 </td>
+                            <td>
+                              <?= $dtrs["jumlahBarang"] * 100; ?>
+                            </td>
+                            <td>
+                              <?= cariHarga($dtrs["idBarang"]) ?>
+                            </td>
                           </tr>
+                          <?php $no++ ?>
+                          <?php endforeach; ?>
                         </tbody>
                       </table>
                     </div>
