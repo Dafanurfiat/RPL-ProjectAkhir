@@ -7,6 +7,19 @@ if (!isset($_SESSION['username'])) {
     header("Location: ../../login.php");
     exit(); // Terminate script execution after the redirect
 }
+require "functions.php";
+$reqtransaksi = read_data("SELECT *
+                 FROM transaksi
+                 WHERE
+                 statusReq=1 AND
+                 status IN (2)");
+$transaksi = read_data("SELECT *
+                 FROM transaksi
+                 WHERE
+                 statusReq=1 AND
+                 status IN (2,3)");
+$statusReq = ["0"=>"Pending", "1"=>"Accept", "2"=>"Decline"];
+$status = ["0"=>"Unapprove", "1"=>"Pending", "2"=>"OnProgress", "3"=>"Done", "4"=>"Decline"];
 ?>
 
 <!DOCTYPE html>
@@ -192,44 +205,34 @@ if (!isset($_SESSION['username'])) {
                       <table class="table table-bordered">
                         <thead>
                           <tr>
-                            <th> Icons </th>
-                            <th> Transaction Details </th>
+                            <th> Status </th>
                             <th> Date </th>
+                            <th> Transaction Details </th>
                             <th> Action </th>
                           </tr>
                         </thead>
-                        <tbody>
+                          <tbody>
+                          <?php foreach ($reqtransaksi as $trs) : ?>
                           <tr>
-                            <td style="size: 100px;"><i  class="mdi mdi-truck" style="font-size: 30px;"></i></td>
-                            <td> 
-                            <a class="nav-link" href="detaildelivery.php">
-                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
-                              </a>  
+                            <td style="size: 100px;">
+                              <i  class="mdi mdi-truck" style="font-size: 30px;"></i>
                             </td>
-                            <td> May 15, 2020  </td>
                             <td>
-                            <div class="d-grid gap-2 d-md-flex justify-content-md-start" >
-                            <button type="button" class="btn btn-outline-success btn-icon-text">
-                            <i class="mdi mdi-checkbox-marked"></i>Arrived</button>
-                            </div>
+                              <?= $trs["tanggalTransaksi"] ?>
                             </td>
-                          </tr>
-                          <tr>
-                            <td> <i  class="mdi mdi-truck" style="font-size: 30px;"> </td>
                             <td> 
-                            <a class="nav-link" href="detaildelivery.php">
+                              <a class="nav-link" href="detaildelivery.php?id=<?= $trs["idTransaksi"]?>">
                                 <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
-                              </a> 
+                              </a>
                             </td>
-                            <td> May 15, 2015 </td>
                             <td>
-                            <div class="d-grid gap-2 d-md-flex justify-content-md-start" >
-                            <button type="button" class="btn btn-outline-success btn-icon-text">
-                            <i class="mdi mdi-checkbox-marked"></i>Arrived</button>
-                            </div>
+                              <div class="d-grid gap-2 d-md-flex justify-content-md-start" >
+                                <button type="button" class="btn btn-outline-success btn-icon-text">
+                                <i class="mdi mdi-checkbox-marked"></i>Arrived</button>
+                              </div>
                             </td>
                           </tr>
-                          </tr>
+                          <?php endforeach; ?>
                           </tbody>
                       </table>
                     </div>
