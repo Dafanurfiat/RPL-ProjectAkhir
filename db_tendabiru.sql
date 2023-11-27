@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `detailtransaksi` (
   `jumlahBarang` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Dumping data for table db_tendabiru.detailtransaksi: ~56 rows (approximately)
+-- Dumping data for table db_tendabiru.detailtransaksi: ~111 rows (approximately)
 /*!40000 ALTER TABLE `detailtransaksi` DISABLE KEYS */;
 INSERT INTO `detailtransaksi` (`idDetailTransaksi`, `idBarang`, `jumlahBarang`) VALUES
 	(1, 1, 100),
@@ -97,7 +97,62 @@ INSERT INTO `detailtransaksi` (`idDetailTransaksi`, `idBarang`, `jumlahBarang`) 
 	(34, 2, 0),
 	(34, 3, 0),
 	(34, 4, 0),
-	(34, 5, 1);
+	(34, 5, 1),
+	(35, 1, 1),
+	(35, 2, 0),
+	(35, 3, 0),
+	(35, 4, 0),
+	(35, 5, 0),
+	(36, 1, 2),
+	(36, 2, 0),
+	(36, 3, 0),
+	(36, 4, 0),
+	(36, 5, 0),
+	(37, 1, 2),
+	(37, 2, 0),
+	(37, 3, 0),
+	(37, 4, 0),
+	(37, 5, 0),
+	(38, 1, 1),
+	(38, 2, 1),
+	(38, 3, 1),
+	(38, 4, 0),
+	(38, 5, 0),
+	(39, 1, 2),
+	(39, 2, 0),
+	(39, 3, 0),
+	(39, 4, 0),
+	(39, 5, 0),
+	(40, 1, 0),
+	(40, 2, 0),
+	(40, 3, 0),
+	(40, 4, 1),
+	(40, 5, 1),
+	(41, 1, 0),
+	(41, 2, 0),
+	(41, 3, 0),
+	(41, 4, 0),
+	(41, 5, 0),
+	(42, 1, 0),
+	(42, 2, 0),
+	(42, 3, 0),
+	(42, 4, 0),
+	(42, 5, 2),
+	(43, 1, 0),
+	(43, 2, 0),
+	(43, 3, 3),
+	(43, 4, 0),
+	(43, 5, 0),
+	(44, 1, 0),
+	(44, 2, 0),
+	(44, 3, 0),
+	(44, 4, 6),
+	(44, 5, 0),
+	(45, 1, 0),
+	(45, 2, 0),
+	(45, 3, 13),
+	(45, 4, 0),
+	(45, 5, 0);
 /*!40000 ALTER TABLE `detailtransaksi` ENABLE KEYS */;
 
 -- Dumping structure for table db_tendabiru.komposisi
@@ -151,17 +206,18 @@ CREATE TABLE IF NOT EXISTS `stok` (
   `namaBarang` varchar(50) DEFAULT NULL,
   `stokBarang` int(11) DEFAULT NULL,
   `hargaBarang` int(11) DEFAULT NULL,
+  `fotoBarang` varchar(25) DEFAULT NULL,
   PRIMARY KEY (`idBarang`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- Dumping data for table db_tendabiru.stok: ~5 rows (approximately)
 /*!40000 ALTER TABLE `stok` DISABLE KEYS */;
-INSERT INTO `stok` (`idBarang`, `namaBarang`, `stokBarang`, `hargaBarang`) VALUES
-	(1, 'Beras', 15000, 1500),
-	(2, 'Bawang Merah', 10000, 3550),
-	(3, 'Bawang Putih', 8000, 3875),
-	(4, 'Cabai', 5000, 8360),
-	(5, 'Kecap', 2500, 2833);
+INSERT INTO `stok` (`idBarang`, `namaBarang`, `stokBarang`, `hargaBarang`, `fotoBarang`) VALUES
+	(1, 'Beras', 15000, 1500, 'beras.png'),
+	(2, 'Bawang Merah', 10000, 3550, 'bawang merah.png'),
+	(3, 'Bawang Putih', 8000, 3875, 'bawang putih.png'),
+	(4, 'Cabai', 5000, 8360, 'cabai.png'),
+	(5, 'Kecap', 2500, 2833, 'kecap.png');
 /*!40000 ALTER TABLE `stok` ENABLE KEYS */;
 
 -- Dumping structure for table db_tendabiru.transaksi
@@ -173,9 +229,9 @@ CREATE TABLE IF NOT EXISTS `transaksi` (
   `statusReq` int(11) DEFAULT NULL,
   `isKokiReq` int(11) DEFAULT NULL,
   PRIMARY KEY (`idTransaksi`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Dumping data for table db_tendabiru.transaksi: ~12 rows (approximately)
+-- Dumping data for table db_tendabiru.transaksi: ~23 rows (approximately)
 /*!40000 ALTER TABLE `transaksi` DISABLE KEYS */;
 INSERT INTO `transaksi` (`idTransaksi`, `tanggalTransaksi`, `totalHarga`, `status`, `statusReq`, `isKokiReq`) VALUES
 	(1, '2021-11-12', 5050, 3, 1, 1),
@@ -189,7 +245,18 @@ INSERT INTO `transaksi` (`idTransaksi`, `tanggalTransaksi`, `totalHarga`, `statu
 	(31, '2023-11-26', 3000, 3, 1, 1),
 	(32, '2023-11-26', 1500, 3, 1, 1),
 	(33, '2023-11-26', 3000, 3, 1, 1),
-	(34, '2023-11-26', 4333, 0, 0, 1);
+	(34, '2023-11-26', 4333, 0, 0, 1),
+	(35, '2023-11-27', 1500, 0, 0, 1),
+	(36, '2023-11-27', 3000, 1, 1, 0),
+	(37, '2023-11-27', 3000, 1, 1, 0),
+	(38, '2023-11-27', 8925, 1, 1, 0),
+	(39, '2023-11-27', 3000, 0, 0, 1),
+	(40, '2023-11-27', 11193, 1, 1, 0),
+	(41, '2023-11-27', 0, 1, 1, 0),
+	(42, '2023-11-27', 5666, 1, 1, 0),
+	(43, '2023-11-27', 11625, 0, 0, 1),
+	(44, '2023-11-27', 50160, 0, 0, 1),
+	(45, '2023-11-27', 50375, 0, 0, 1);
 /*!40000 ALTER TABLE `transaksi` ENABLE KEYS */;
 
 -- Dumping structure for table db_tendabiru.users
@@ -213,3 +280,4 @@ INSERT INTO `users` (`id`, `username`, `email`, `roles`, `password`) VALUES
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
+
