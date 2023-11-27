@@ -7,6 +7,20 @@ if (!isset($_SESSION['username'])) {
     header("Location: ../../login.php");
     exit(); // Terminate script execution after the redirect
 }
+
+require "functions.php";
+$reqtransaksi = read_data("SELECT * 
+            FROM transaksi 
+            WHERE
+            statusReq=1 AND 
+            status=1");
+$riwayattransaksi = read_data("SELECT *
+                 FROM transaksi
+                 WHERE
+                 statusReq=1 AND
+                 status IN (2,3)");
+$statusReq = ["0"=>"Pending", "1"=>"Accept", "2"=>"Decline"];
+$status = ["0"=>"Unapprove", "1"=>"Pending", "2"=>"OnProgress", "3"=>"Done", "4"=>"Decline"];
 ?>
 
 <!DOCTYPE html>
@@ -188,6 +202,11 @@ if (!isset($_SESSION['username'])) {
               <div class="col-lg-6 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
+
+
+
+
+
                     <h4 class="card-title">Transaction History</h4>
                     <div class="table-responsive">
                       <table class="table table-dark">
@@ -200,6 +219,8 @@ if (!isset($_SESSION['username'])) {
                           </tr>
                         </thead>
                         <tbody>
+                          <?php $no = 1 ?>
+                          <?php foreach ($reqtransaksi as $trs) : ?>
                           <tr>
                             <td> 1 </td>
                             <td> May 15, 2015 </td>
@@ -210,19 +231,15 @@ if (!isset($_SESSION['username'])) {
                             </td>
                             <td> RP 250.000 </td>
                           </tr>
-                          <tr>
-                            <td> 2 </td>
-                            <td> July 1, 2015 </td>
-                            <td>
-                            <a class="nav-link" href="transactiondetail.php">
-                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
-                              </a> 
-                            </td>
-                            <td> RP 125.000 </td>
-                          </tr>
+                          <?php $no++ ?>
+                          <?php endforeach; ?>
                         </tbody>
                       </table>
                     </div>
+
+
+
+
                   </div>
                 </div>
               </div>
