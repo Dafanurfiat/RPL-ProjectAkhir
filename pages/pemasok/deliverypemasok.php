@@ -20,6 +20,11 @@ $transaksi = read_data("SELECT *
                  status IN (2,3)");
 $statusReq = ["0"=>"Pending", "1"=>"Accept", "2"=>"Decline"];
 $status = ["0"=>"Unapprove", "1"=>"Pending", "2"=>"OnProgress", "3"=>"Done", "4"=>"Decline"];
+$statusclass = ["0"=>"badge badge-grey", 
+                "1"=>"badge badge-grey", 
+                "2"=>"badge badge-warning", 
+                "3"=>"badge badge-success", 
+                "4"=>"badge badge-danger"];
 ?>
 
 <!DOCTYPE html>
@@ -250,27 +255,30 @@ $status = ["0"=>"Unapprove", "1"=>"Pending", "2"=>"OnProgress", "3"=>"Done", "4"
                             <th> No </th>
                             <th> Date </th>
                             <th> Transaction details </th>
+                            <th> Status </th>
                           </tr>
                         </thead>
                         <tbody>
+                          <?php $no = 1 ?>
+                          <?php foreach ($transaksi as $trs) : ?>
                           <tr>
-                            <td> 1 </td>
-                            <td> May 15, 2015 </td>
                             <td>
-                            <a class="nav-link" href="detaildelivery.php">
+                              <?= $no ?>
+                            </td>
+                            <td>
+                              <?= $trs["tanggalTransaksi"] ?>
+                            </td>
+                            <td>
+                              <a class="nav-link" href="detaildelivery.php?id=<?= $trs["idTransaksi"]?>">
                                 <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
-                              </a> 
+                              </a>
+                            </td>
+                            <td>
+                              <label class="<?= $statusclass[$trs['status']] ?>"><?= $status[$trs["status"]] ?></label>
                             </td>
                           </tr>
-                          <tr>
-                            <td> 2 </td>
-                            <td> July 1, 2015 </td>
-                            <td>
-                            <a class="nav-link" href="detaildelivery.php">
-                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
-                              </a> 
-                            </td>
-                          </tr>
+                          <?php $no++ ?>
+                          <?php endforeach; ?>
                         </tbody>
                       </table>
                     </div>

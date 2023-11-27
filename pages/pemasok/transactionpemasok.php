@@ -291,9 +291,9 @@ $statusclass = ["0"=>"badge badge-grey",
                               <?= $trs["tanggalTransaksi"] ?>
                             </td>
                             <td>
-                              <a class="nav-link" href="transactiondetail.php?id=<?= $trs["idTransaksi"]?>">
+                              <a class="nav-link" href="transactiondetail.php">
                                 <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
-                              </a>
+                              </a> 
                             </td>
                             <td>
                               <?= $trs["totalHarga"]; ?>
