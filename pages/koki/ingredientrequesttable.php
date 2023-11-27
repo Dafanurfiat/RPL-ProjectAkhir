@@ -1,11 +1,33 @@
 <?php
 include '../../config.php';
+require 'functions.php';
 session_start();
 
  
 if (!isset($_SESSION['username'])) {
     header("Location: ../../login.php");
     exit(); // Terminate script execution after the redirect
+}
+
+$barang = read_data("SELECT * FROM stok");
+
+if(isset($_POST["submit"])){
+    
+    if(create_data($_POST) > 0){
+      echo "
+        <script>
+          alert('data berhasil ditambahkan');
+          document.location.href='restock.php';
+        </script>
+      ";
+    }else{
+      echo "
+        <script>
+          alert('data gagal ditambahkan');
+          document.location.href='restock.php';
+        </script>
+      ";
+    }
 }
 ?>
 
@@ -199,53 +221,52 @@ if (!isset($_SESSION['username'])) {
                   <div class="card-body">
                     <h4 class="card-title">Ingredient Request Table</h4>
                     <div class="table-responsive">
-                      <table class="table">
-                        <thead>
-                          <tr>
-                            <th>No</th>
-                            <th>Picture</th>
-                            <th>Ingredients</th>
-                            <th>Amount/g</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>
-                              1
-                            </td>
-                            <td><img src="../../assets/images/cabai.png" style=" width:50px; height:50px;"alt="logo" /></td>
-                            <td>Cabai</td>
-                            <td>
-                              <div class="form-outline" data-mdb-input-init >
-                                  <label class="form-label" for="typeNumber" ></label>
-                                  <input type="number" id="typeNumber" class="form-control" style="background-color: white; color:black; width: 70px; height: 30px;" value="0" min="0"/>
-                                </div>
-                              </label>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              2
-                            </td>
-                            <td><img src="../../assets/images/bawang-merah.png" style=" width:50px; height:50px;"alt="logo" /></td>
-                            <td>Bawang Merah</td>
-                            <td>
-                              <div class="form-outline" data-mdb-input-init >
-                                  <label class="form-label" for="typeNumber" ></label>
-                                  <input type="number" id="typeNumber" class="form-control" style="background-color: white; color:black; width: 70px; height: 30px;" value="0" min="0"/>
-                                </div>
-                              </label>
-                            </td>
-                          </tr>
-                          <tr>
-                        </tbody>
-                      </table>
-                      <footer class="footer">
-                      <div class="d-grid gap-2 d-md-flex justify-content-md-end" >
-                            <button type="button" class="btn btn-outline-warning btn-icon-text">
-                            <i class="mdi mdi-checkbox-marked"></i> Request </button>
-                      </div>
-                      </footer>
+                      <form action="" method="post">
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <th>No</th>
+                              <th>Picture</th>
+                              <th>Ingredients</th>
+                              <th>Amount/g</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <?php $no = 1 ?>
+                            <?php foreach($barang as $brg) : ?>
+                            <tr>
+                              <td>
+                                <?= $no ?>
+                              </td>
+                              <td>
+                                <img src="../../assets/images/stok/<?= $brg['fotoBarang'] ?>" style=" width:50px; height:50px;"alt="logo" />
+                              </td>
+                              <td>
+                                <?php $alias = $brg["idBarang"]; ?>
+                                <label for="<?= $alias ?>"><?= $brg["namaBarang"] ?></label>
+                              </td>
+                              <td>
+                                <div class="form-outline" data-mdb-input-init >
+                                    <label class="form-label" for="<?= $alias ?>" ></label>
+                                    <input type="number" name="<?= $alias ?>" id="<?= $alias ?>" class="form-control" style="background-color: white; color:black; width: 70px; height: 30px;" value="0" min="0" required/>
+                                  </div>
+                                </label>
+                              </td>
+                            </tr>
+                            <?php $no++ ?>
+                            <?php endforeach; ?>
+                          </tbody>
+                        </table>
+                        <footer class="footer">
+                          <div class="d-grid gap-2 d-md-flex justify-content-md-end" >
+                            <button type="submit" name="submit" class="btn btn-outline-warning btn-icon-text">
+                              <i class="mdi mdi-checkbox-marked">
+                                Request                                
+                              </i>
+                            </button>
+                          </div>
+                        </footer>
+                      </form>
                     </div>
                   </div>
                 </div>
