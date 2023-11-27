@@ -6,14 +6,14 @@ if(notapprove($id) > 0){
 	echo "
 		<script>
 			alert('orderan berhasil ditolak');
-			document.location.href='order.php';
+			document.location.href='transactionpemasok.php';
 		</script>
 	";
 }else{
 	echo "
 		<script>
 			alert('orderan gagal ditolak');
-			document.location.href='order.php';
+			document.location.href='transactionpemasok.php';
 		</script>
 	";
 }

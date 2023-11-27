@@ -6,14 +6,14 @@ if(approve($id) > 0){
 	echo "
 		<script>
 			alert('orderan berhasil diterima');
-			document.location.href='order.php';
+			document.location.href='transactionpemasok.php';
 		</script>
 	";
 }else{
 	echo "
 		<script>
 			alert('orderan gagal diterima');
-			document.location.href='order.php';
+			document.location.href='transactionpemasok.php';
 		</script>
 	";
 }
