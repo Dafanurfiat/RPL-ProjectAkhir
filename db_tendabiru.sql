@@ -29,7 +29,8 @@ CREATE TABLE IF NOT EXISTS `detailorders` (
 INSERT INTO `detailorders` (`jumlahBarang`, `idOrder`, `idMakanan`) VALUES
 	(1, 1, 1),
 	(2, 3, 1),
-	(2, 4, 1);
+	(2, 4, 1),
+	(4, 5, 1);
 /*!40000 ALTER TABLE `detailorders` ENABLE KEYS */;
 
 -- Dumping structure for table db_tendabiru.detailtransaksi
@@ -39,40 +40,19 @@ CREATE TABLE IF NOT EXISTS `detailtransaksi` (
   `jumlahBarang` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Dumping data for table db_tendabiru.detailtransaksi: ~111 rows (approximately)
+-- Dumping data for table db_tendabiru.detailtransaksi: ~115 rows (approximately)
 /*!40000 ALTER TABLE `detailtransaksi` DISABLE KEYS */;
 INSERT INTO `detailtransaksi` (`idDetailTransaksi`, `idBarang`, `jumlahBarang`) VALUES
-	(1, 1, 100),
 	(23, 1, 0),
 	(23, 2, 2),
 	(23, 3, 0),
 	(23, 4, 2),
 	(23, 5, 0),
-	(24, 1, 2),
-	(24, 2, 0),
-	(24, 3, 0),
-	(24, 4, 0),
-	(24, 5, 0),
-	(26, 1, 1),
-	(26, 2, 0),
-	(26, 3, 0),
-	(26, 4, 0),
-	(26, 5, 0),
 	(27, 1, 2),
 	(27, 2, 0),
 	(27, 3, 0),
 	(27, 4, 0),
 	(27, 5, 0),
-	(28, 1, 1),
-	(28, 2, 0),
-	(28, 3, 0),
-	(28, 4, 0),
-	(28, 5, 0),
-	(29, 1, 5),
-	(29, 2, 0),
-	(29, 3, 0),
-	(29, 4, 0),
-	(29, 5, 0),
 	(30, 1, 2),
 	(30, 2, 0),
 	(30, 3, 0),
@@ -152,7 +132,32 @@ INSERT INTO `detailtransaksi` (`idDetailTransaksi`, `idBarang`, `jumlahBarang`) 
 	(45, 2, 0),
 	(45, 3, 13),
 	(45, 4, 0),
-	(45, 5, 0);
+	(45, 5, 0),
+	(46, 1, 2),
+	(46, 2, 0),
+	(46, 3, 1),
+	(46, 4, 0),
+	(46, 5, 0),
+	(47, 1, 0),
+	(47, 2, 0),
+	(47, 3, 0),
+	(47, 4, 6),
+	(47, 5, 0),
+	(48, 1, 0),
+	(48, 2, 2),
+	(48, 3, 0),
+	(48, 4, 2),
+	(48, 5, 0),
+	(49, 1, 0),
+	(49, 2, 3),
+	(49, 3, 0),
+	(49, 4, 0),
+	(49, 5, 0),
+	(50, 1, 0),
+	(50, 2, 3),
+	(50, 3, 0),
+	(50, 4, 0),
+	(50, 5, 0);
 /*!40000 ALTER TABLE `detailtransaksi` ENABLE KEYS */;
 
 -- Dumping structure for table db_tendabiru.komposisi
@@ -166,8 +171,8 @@ CREATE TABLE IF NOT EXISTS `komposisi` (
 /*!40000 ALTER TABLE `komposisi` DISABLE KEYS */;
 INSERT INTO `komposisi` (`jumlahBarang`, `idMakanan`, `idBarang`) VALUES
 	(200, 1, 1),
-	(25, 1, 1),
-	(25, 1, 1);
+	(25, 1, 2),
+	(40, 1, 5);
 /*!40000 ALTER TABLE `komposisi` ENABLE KEYS */;
 
 -- Dumping structure for table db_tendabiru.makanan
@@ -175,13 +180,14 @@ CREATE TABLE IF NOT EXISTS `makanan` (
   `idMakanan` int(11) NOT NULL AUTO_INCREMENT,
   `namaMakanan` varchar(50) DEFAULT NULL,
   `hargaMakanan` int(11) DEFAULT NULL,
+  `gambar` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`idMakanan`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Dumping data for table db_tendabiru.makanan: ~1 rows (approximately)
+-- Dumping data for table db_tendabiru.makanan: ~0 rows (approximately)
 /*!40000 ALTER TABLE `makanan` DISABLE KEYS */;
-INSERT INTO `makanan` (`idMakanan`, `namaMakanan`, `hargaMakanan`) VALUES
-	(1, 'Nasi Goreng', 15000);
+INSERT INTO `makanan` (`idMakanan`, `namaMakanan`, `hargaMakanan`, `gambar`) VALUES
+	(1, 'Nasi Goreng', 15000, 'nasigoreng.jpg');
 /*!40000 ALTER TABLE `makanan` ENABLE KEYS */;
 
 -- Dumping structure for table db_tendabiru.orders
@@ -190,14 +196,15 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `tanggalOrder` date DEFAULT NULL,
   `totalHarga` int(11) DEFAULT NULL,
   PRIMARY KEY (`idOrder`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- Dumping data for table db_tendabiru.orders: ~3 rows (approximately)
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
 INSERT INTO `orders` (`idOrder`, `tanggalOrder`, `totalHarga`) VALUES
 	(1, '2023-11-26', 15000),
 	(3, '2023-11-26', 30000),
-	(4, '2023-11-26', 30000);
+	(4, '2023-11-26', 30000),
+	(5, '2023-11-28', 60000);
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 
 -- Dumping structure for table db_tendabiru.stok
@@ -229,34 +236,36 @@ CREATE TABLE IF NOT EXISTS `transaksi` (
   `statusReq` int(11) DEFAULT NULL,
   `isKokiReq` int(11) DEFAULT NULL,
   PRIMARY KEY (`idTransaksi`)
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Dumping data for table db_tendabiru.transaksi: ~23 rows (approximately)
+-- Dumping data for table db_tendabiru.transaksi: ~25 rows (approximately)
 /*!40000 ALTER TABLE `transaksi` DISABLE KEYS */;
 INSERT INTO `transaksi` (`idTransaksi`, `tanggalTransaksi`, `totalHarga`, `status`, `statusReq`, `isKokiReq`) VALUES
 	(1, '2021-11-12', 5050, 3, 1, 1),
 	(23, '2023-11-26', 23820, 4, 2, 1),
 	(24, '2023-11-26', 3000, 2, 1, 1),
-	(26, '2023-11-26', 1500, 4, 1, 1),
 	(27, '2023-11-26', 3000, 4, 2, 1),
-	(28, '2023-11-26', 1500, 2, 1, 0),
-	(29, '2023-11-26', 7500, 1, 1, 0),
 	(30, '2023-11-26', 3000, 2, 1, 1),
 	(31, '2023-11-26', 3000, 3, 1, 1),
 	(32, '2023-11-26', 1500, 3, 1, 1),
 	(33, '2023-11-26', 3000, 3, 1, 1),
-	(34, '2023-11-26', 4333, 0, 0, 1),
+	(34, '2023-11-26', 4333, 1, 1, 1),
 	(35, '2023-11-27', 1500, 0, 0, 1),
 	(36, '2023-11-27', 3000, 1, 1, 0),
 	(37, '2023-11-27', 3000, 1, 1, 0),
 	(38, '2023-11-27', 8925, 1, 1, 0),
 	(39, '2023-11-27', 3000, 0, 0, 1),
 	(40, '2023-11-27', 11193, 1, 1, 0),
-	(41, '2023-11-27', 0, 1, 1, 0),
+	(41, '2023-11-27', 0, 2, 1, 0),
 	(42, '2023-11-27', 5666, 1, 1, 0),
 	(43, '2023-11-27', 11625, 0, 0, 1),
 	(44, '2023-11-27', 50160, 0, 0, 1),
-	(45, '2023-11-27', 50375, 0, 0, 1);
+	(45, '2023-11-27', 50375, 0, 0, 1),
+	(46, '2023-11-27', 6875, 1, 1, 1),
+	(47, '2023-11-27', 50160, 3, 1, 1),
+	(48, '2023-11-28', 23820, 3, 1, 1),
+	(49, '2023-11-28', 10650, 0, 0, 1),
+	(50, '2023-11-28', 10650, 1, 1, 1);
 /*!40000 ALTER TABLE `transaksi` ENABLE KEYS */;
 
 -- Dumping structure for table db_tendabiru.users
@@ -267,13 +276,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   `roles` varchar(255) NOT NULL,
   `password` varchar(64) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- Dumping data for table db_tendabiru.users: ~2 rows (approximately)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `username`, `email`, `roles`, `password`) VALUES
 	(1, 'admin', 'admin@email.com', 'manager', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8'),
-	(2, 'koki', 'koki@email.com', 'koki', '707c403908e826807640df1bea0ad7674d40b25de50c190bd8aeb5ef00d08055');
+	(2, 'koki', 'koki@email.com', 'koki', '707c403908e826807640df1bea0ad7674d40b25de50c190bd8aeb5ef00d08055'),
+	(3, 'pemasok', 'pemasok@email.com', 'pemasok', 'd5e7e757918bfd14f87af457e169ad99ce42b898319938c3218e0df699dc5280');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
