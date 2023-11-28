@@ -102,14 +102,6 @@ $transaksi = read_data("SELECT * FROM transaksi WHERE idTransaksi=$id");
               <span class="menu-title">Delivery</span>
             </a>
           </li>
-          <li class="nav-item menu-items">
-            <a class="nav-link" href="report.php">
-              <span class="menu-icon">
-                <i class="mdi mdi-chart-bar"></i>
-              </span>
-              <span class="menu-title">Report</span>
-            </a>
-          </li>
         </ul>
       </nav>
       <!-- partial -->
