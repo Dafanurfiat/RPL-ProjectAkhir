@@ -337,7 +337,7 @@ $statusclass = ["0"=>"badge badge-grey",
                             <th>No</th>
                             <th>Date</th>
                             <th>Total Price</th>
-                            <th>Detail</th>
+                            <th>Ingredient Usage</th>
                           </tr>
                         </thead>
                         <tbody>
