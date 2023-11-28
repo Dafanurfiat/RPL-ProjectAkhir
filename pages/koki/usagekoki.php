@@ -7,6 +7,8 @@ if (!isset($_SESSION['username'])) {
     header("Location: ../../login.php");
     exit(); // Terminate script execution after the redirect
 }
+require "functions.php";
+$riwayattransaksi = read_data("SELECT * FROM orders");
 ?>
 
 <!DOCTYPE html>
@@ -209,26 +211,26 @@ if (!isset($_SESSION['username'])) {
                           </tr>
                         </thead>
                         <tbody>
+                          <?php $no = 1 ?>
+                          <?php foreach ($riwayattransaksi as $trs) : ?>
                           <tr>
-                            <td> 1 </td>
-                            <td> May 15, 2015 </td>
-                            <td> Rp 500.000 </td>
                             <td>
-                            <a class="nav-link" href="detailusageproduct.php">
+                              <?= $no ?>
+                            </td>
+                            <td>
+                              <?= $trs["tanggalOrder"] ?>
+                            </td>
+                            <td>
+                              <?= $trs["totalHarga"]; ?>
+                            </td>
+                            <td>
+                              <a class="nav-link" href="detailusageproduct.php?id=<?= $trs["idOrder"]?>">
                                 <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
                               </a> 
                             </td>
                           </tr>
-                          <tr>
-                            <td> 2 </td>
-                            <td> July 1, 2015 </td>
-                            <td> Rp 1.000.000 </td>
-                            <td>
-                            <a class="nav-link" href="detailusageproduct.php">
-                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
-                              </a> 
-                            </td>
-                          </tr>
+                          <?php $no++ ?>
+                          <?php endforeach; ?>
                         </tbody>
                       </table>
                     </div>

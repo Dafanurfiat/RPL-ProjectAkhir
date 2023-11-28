@@ -7,6 +7,10 @@ if (!isset($_SESSION['username'])) {
     header("Location: ../../login.php");
     exit(); // Terminate script execution after the redirect
 }
+require "functions.php";
+$id = $_GET["id"];
+$dtransaksi = read_detail_data_usage($id);
+$transaksi = read_data("SELECT * FROM orders WHERE idOrder=$id");
 ?>
 
 <!DOCTYPE html>
@@ -209,47 +213,36 @@ if (!isset($_SESSION['username'])) {
                           </tr>
                         </thead>
                         <tbody>
+                          <?php $no = 1 ?>
+                          <?php foreach ($dtransaksi as $dtrs) : ?>
                            <tr>
-                             <td>1</td>
-                                <td>Nasi Goreng</td>
-                                <td>1</td>
-                                <td>Rp 15.000</td>
-                                <td>
-                                    <li>
-                                        <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic1">
-                                            <span type="button" class="btn btn-outline-success btn-icon-text"> <i class="mdi mdi-eye"></i> See </span>
-                                        </a>
-                                        <div class="collapse" id="ui-basic1">
-                                            <ul class="nav flex-column sub-menu">
-                                                <li class="nav-item">Cabai</li>
-                                                <li class="nav-item">Beras</li>
-                                                <li class="nav-item">Kecaap</li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                </td>
+                             <td>
+                               <?= $no ?>
+                             </td>
+                              <td>
+                                <?= $dtrs["namaMakanan"] ?>
+                              </td>
+                              <td>
+                                <?= $dtrs["jumlahBarang"]; ?>
+                              </td>
+                              <td>
+                                <?= cariHarga_usage($dtrs["idMakanan"]) ?>
+                              </td>
+                              <td>
+                                <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic1">
+                                  <span type="button" class="btn btn-outline-success btn-icon-text"> <i class="mdi mdi-eye"></i> See </span>
+                                </a>
+                                <div class="collapse" id="ui-basic1">
+                                  <ul class="nav flex-column sub-menu">
+                                    <li class="nav-item">Cabai</li>
+                                    <li class="nav-item">Beras</li>
+                                    <li class="nav-item">Kecaap</li>
+                                  </ul>
+                                </div>
+                              </td>
                             </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Mie Goreng</td>
-                                <td>2</td>
-                                <td>Rp 15.000</td>
-                                <td>
-                                    <li>
-                                        <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic2" aria-expanded="false" aria-controls="ui-basic2">
-                                            <span type="menu-icon" class="btn btn-outline-success btn-icon-text"> <i class="mdi mdi-eye"></i> See </span>
-                                        </a>
-                                        <div class="collapse" id="ui-basic2">
-                                            <ul class="nav flex-column sub-menu">
-                                                <li class="nav-item">Cabai</li>
-                                                <li class="nav-item">Beras</li>
-                                                <li class="nav-item">Kecaap</li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                </td>
-                            </tr>
-                          <tr>
+                            <?php $no++ ?>
+                            <?php endforeach; ?>
                         </tbody>
                       </table>
                     </div>

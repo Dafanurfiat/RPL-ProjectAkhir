@@ -7,6 +7,12 @@ if (!isset($_SESSION['username'])) {
     header("Location: ../../login.php");
     exit(); // Terminate script execution after the redirect
 }
+
+require "functions.php";
+$id = $_GET["id"];
+$dtransaksi = read_detail_data_usage($id);
+$transaksi = read_data("SELECT * FROM orders WHERE idOrder=$id");
+
 ?>
 
 <!DOCTYPE html>
@@ -211,17 +217,26 @@ if (!isset($_SESSION['username'])) {
                           </tr>
                         </thead>
                         <tbody>
+                          <?php $no = 1 ?>
+                          <?php foreach ($dtransaksi as $dtrs) : ?>
                            <tr>
-                             <td>1</td>
-                                <td><img src="../../assets/images/cabai.png" style="width:50px; height:50px;" alt="logo" /></td>
-                                <td>Nasi Goreng</td>
-                                <td>
-                                    <div class="form-outline" data-mdb-input-init>
-                                        <label class="form-label" for="typeNumber"></label>
-                                        <input type="number" id="typeNumber1" class="form-control" style="background-color: white; color:black; width: 70px; height: 30px;" value="0" min="0" />
+                             <td>
+                               <?= $no ?>
+                             </td>
+                              <td><img src="../../assets/images/cabai.png" style="width:50px; height:50px;" alt="logo" />
+                              </td>
+                              <td>
+                                <?= $dtrs["namaMakanan"] ?>
+                              </td>
+                              <td>
+                                <div class="form-outline" data-mdb-input-init>
+                                  <label class="form-label" for="typeNumber"></label>
+                                    <input type="number" id="typeNumber1" class="form-control" style="background-color: white; color:black; width: 70px; height: 30px;" value="0" min="0" />
                                     </div>
                                 </td>
-                                <td>Rp 15.000</td>
+                                <td>
+                                  <?= cariHarga_usage($dtrs["idMakanan"]) ?>
+                                </td>
                                 <td>
                                     <li>
                                         <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic1">
@@ -236,34 +251,9 @@ if (!isset($_SESSION['username'])) {
                                         </div>
                                     </li>
                                 </td>
+                              <?php $no++ ?>
+                              <?php endforeach; ?>
                             </tr>
-                            <tr>
-                                <td>2</td>
-                                <td><img src="../../assets/images/bawang-merah.png" style="width:50px; height:50px;" alt="logo" /></td>
-                                <td>Mie Goreng</td>
-                                <td>
-                                    <div class="form-outline" data-mdb-input-init>
-                                        <label class="form-label" for="typeNumber"></label>
-                                        <input type="number" id="typeNumber2" class="form-control" style="background-color: white; color:black; width: 70px; height: 30px;" value="0" min="0" />
-                                    </div>
-                                </td>
-                                <td>Rp 15.000</td>
-                                <td>
-                                    <li>
-                                        <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic2" aria-expanded="false" aria-controls="ui-basic2">
-                                            <span type="menu-icon" class="btn btn-outline-success btn-icon-text"> <i class="mdi mdi-eye"></i> See </span>
-                                        </a>
-                                        <div class="collapse" id="ui-basic2">
-                                            <ul class="nav flex-column sub-menu">
-                                                <li class="nav-item">Cabai</li>
-                                                <li class="nav-item">Beras</li>
-                                                <li class="nav-item">Kecaap</li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                </td>
-                            </tr>
-                          <tr>
                         </tbody>
                       </table>
                       <footer class="footer">
