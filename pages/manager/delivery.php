@@ -1,5 +1,6 @@
 <?php
 include '../../config.php';
+require 'functions.php';
 session_start();
 
  
@@ -7,6 +8,25 @@ if (!isset($_SESSION['username'])) {
     header("Location: ../../login.php");
     exit(); // Terminate script execution after the redirect
 }
+
+$reqtransaksi = read_data("SELECT * 
+              FROM transaksi 
+              WHERE
+              statusReq=0 AND 
+              status IN (0,1,2,3,4) AND
+              isKokiReq=1");
+$riwayattransaksi = read_data("SELECT *
+                  FROM transaksi
+                  WHERE
+                  statusReq=1 AND
+                  status IN (2,3,4)");
+$statusReq = ["0"=>"Pending", "1"=>"Accept", "2"=>"Decline"];
+$status = ["0"=>"Unapprove", "1"=>"Pending", "2"=>"OnProgress", "3"=>"Done", "4"=>"Decline"];
+$statusclass = ["0"=>"badge badge-grey", 
+                "1"=>"badge badge-grey", 
+                "2"=>"badge badge-warning", 
+                "3"=>"badge badge-success", 
+                "4"=>"badge badge-danger"];
 ?>
 
 <!DOCTYPE html>
@@ -219,36 +239,35 @@ if (!isset($_SESSION['username'])) {
                             <th> Icons </th>
                             <th> Transaction Details </th>
                             <th> Date </th>
+                            <th> Total Price </th>
                             <th> Status </th>
                           </tr>
                         </thead>
                         <tbody>
+                          <?php $no = 1 ?>
+                          <?php foreach ($riwayattransaksi as $trs) : ?>
                           <tr>
-                            <td style="size: 100px;"><i  class="mdi mdi-truck" style="font-size: 30px;"></i></td>
+                            <td style="size: 100px;">
+                              <i  class="mdi mdi-truck" style="font-size: 30px;"></i>
+                            </td>
                             <td> 
-                            <a class="nav-link" href="orderdetail.php">
+                              <a class="nav-link" href="orderdetail.php?id=<?= $trs["idTransaksi"]?>">
                                 <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
-                              </a>  
+                              </a>
                             </td>
-                            <td> May 15, 2020  </td>
                             <td>
-                                <label class="badge badge-warning">on the road</label>
+                              <?= $trs["tanggalTransaksi"] ?>
                             </td>
-                          </tr>
-                          <tr>
-                            <td> <i  class="mdi mdi-truck" style="font-size: 30px;"> </td>
-                            <td> 
-                            <a class="nav-link" href="orderdetail.php">
-                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
-                              </a> 
-                            </td>
-                            <td> May 15, 2015 </td>
                             <td>
-                                <label class="badge badge-success">Arrived</label>
+                              <?= $trs["totalHarga"]; ?>
+                            </td>
+                            <td>
+                                <label class="<?= $statusclass[$trs['status']] ?>"><?= $status[$trs["status"]] ?></label>
                             </td>
                           </tr>
-                          </tr>
-                          </tbody>
+                          <?php $no++ ?>
+                          <?php endforeach; ?>
+                        </tbody>
                       </table>
                     </div>
                   </div>
