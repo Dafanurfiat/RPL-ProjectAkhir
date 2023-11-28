@@ -18,7 +18,7 @@
 	// read
 	function read_detail_data($id){
 
-		$dtransaksi = read_data("SELECT s.namaBarang, d.jumlahBarang, d.idBarang
+		$dtransaksi = read_data("SELECT s.namaBarang, d.jumlahBarang, d.idBarang, s.fotoBarang 
 								 FROM detailtransaksi d
 								 JOIN stok s on s.idBarang=d.idBarang
 								 WHERE d.idDetailTransaksi=$id and d.jumlahBarang>0");
