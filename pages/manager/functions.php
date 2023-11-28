@@ -80,5 +80,19 @@
 		return $harga; 
 	}
 
+	function delete_transaksi($id){
+		global $conn;
+		$query = "DELETE FROM transaksi WHERE idTransaksi='$id'";
+		mysqli_query($conn, $query);
+		$query = "DELETE FROM detailtransaksi WHERE idDetailTransaksi='$id'";
+		mysqli_query($conn, $query);
+		return mysqli_affected_rows($conn);
+	}
+
+	function isOnProgress($value){
+		if($value == 2){
+			return true;
+		}
+	}
 
 ?>

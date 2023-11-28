@@ -330,7 +330,13 @@ $statusclass = ["0"=>"badge badge-grey",
                                 <label class="<?= $statusclass[$trs['status']] ?>"><?= $status[$trs["status"]] ?></label>
                             </td>
                             <td>
-                                <button type="button" class="btn btn-outline-danger btn-icon-text"> Delete </button>  
+                                <?php if(isOnProgress($trs["status"])) : ?>
+                                  <button type="button" class="btn btn-outline-danger btn-icon-text" disabled> Delete </button>
+                                <?php else: ?>
+                                  <a href="delete.php?id=<?= $trs["idTransaksi"]?>">
+                                    <button type="button" class="btn btn-outline-danger btn-icon-text"> Delete </button>
+                                  </a>
+                                <?php endif;?> 
                             </td>
                           </tr>
                           <?php $no++ ?>

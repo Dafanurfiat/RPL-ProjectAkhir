@@ -224,42 +224,53 @@ if (!isset($_SESSION['username'])) {
                         </thead>
                         <tbody>
                         <?php
-                        $query = "SELECT * FROM `stok-barang` ORDER BY id ASC";;
+                        $query = "SELECT * FROM stok";;
                         $result = mysqli_query($conn, $query);
                         
                         $no = 1;
                         
                         // Periksa apakah query berhasil dijalankan
                         if ($result) {
-                            while ($row = mysqli_fetch_assoc($result)) {
-                        ?>
+                            while ($row = mysqli_fetch_assoc($result)) { ?>
                                 <tr>
-                                    <td><img src="../../assets/images/<?php echo $row['Image']; ?>" alt="logo" style="width: 50px; height: 50px; " /></td>
-                                    <td><?php echo $row['nama_barang']; ?></td>
-                                    <td><?php echo $row['Jumlah']; ?></td>
-                                    <td><label class="badge <?php if($row['Jumlah'] <= 50 && $row['Jumlah'] != 0){
-                                      echo "badge-warning";
-                                    }if($row['Jumlah']>=50){
-                                      echo "badge-success";
-                                    }if($row['Jumlah']==0){
-                                      echo "badge-danger";
-                                    } ?>"><?php
-                                    if ($row['Jumlah'] == 0 ) {
-                                      echo "Out Of Stock";
-                                  } elseif ($row['Jumlah'] <= 50 && $row['Jumlah'] != 0) {
-                                    echo "Almost";
-                                  } elseif ($row['Jumlah'] >= 50 ) {
-                                      echo "Available";
-                                  }
-                                    ?></label></td>
+                                    <td>
+                                      <img src="../../assets/images/stok/<?= $row['fotoBarang']; ?>" alt="logo" style="width: 50px; height: 50px; " />
+                                    </td>
+                                    <td>
+                                      <?= $row['namaBarang']; ?>
+                                    </td>
+                                    <td>
+                                      <?= $row['stokBarang']; ?>
+                                    </td>
+                                    <td>
+                                      <label class="badge 
+                                        <?php if($row['stokBarang']==0){
+                                            echo "badge-danger";
+                                          }if($row['stokBarang'] <= 10000 && $row['stokBarang'] != 0){
+                                            echo "badge-warning";
+                                          }if($row['stokBarang']>10000){
+                                            echo "badge-success";
+                                          } 
+                                        ?>"
+                                      >
+                                      <?php
+                                        if ($row['stokBarang'] == 0 ) {
+                                          echo "Out Of Stock";
+                                        } elseif ($row['stokBarang'] <= 10000 && $row['stokBarang'] != 0) {
+                                          echo "Almost";
+                                        } elseif ($row['stokBarang'] > 10000 ) {
+                                          echo "Available";
+                                        }
+                                      ?>
+                                    </label>
+                                  </td>
                                 </tr>
                         <?php
-                                $no++;
-                            }
+                          $no++;
+                          }
                         } else {
                             echo "Error: " . $query . "<br>" . mysqli_error($conn);
-                        }
-                        ?>
+                        } ?>
                         </tbody>
                       </table>
                     </div>

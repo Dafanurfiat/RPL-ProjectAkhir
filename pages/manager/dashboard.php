@@ -8,6 +8,24 @@ if (!isset($_SESSION['username'])) {
     header("Location: ../../login.php");
     exit(); // Terminate script execution after the redirect
 }
+$reqtransaksi = read_data("SELECT * 
+              FROM transaksi 
+              WHERE
+              statusReq=0 AND 
+              status IN (0,1,2,3,4) AND
+              isKokiReq=1");
+$riwayattransaksi = read_data("SELECT *
+                  FROM transaksi
+                  WHERE
+                  statusReq=1 AND
+                  status IN (0,1,2,3,4)");
+$statusReq = ["0"=>"Pending", "1"=>"Accept", "2"=>"Decline"];
+$status = ["0"=>"Unapprove", "1"=>"Pending", "2"=>"OnProgress", "3"=>"Done", "4"=>"Decline"];
+$statusclass = ["0"=>"badge badge-grey", 
+                "1"=>"badge badge-grey", 
+                "2"=>"badge badge-warning", 
+                "3"=>"badge badge-success", 
+                "4"=>"badge badge-danger"];
 ?>
 
 <!DOCTYPE html>
@@ -215,59 +233,116 @@ if (!isset($_SESSION['username'])) {
                   <div class="card-body">
                     <h4 class="card-title">List Stock</h4>
                     <div class="table-responsive">
-                      <table class="table" >
+                      <table class="table">
                         <thead>
                           <tr>
                             <th>Picture</th>
                             <th>Ingredients</th>
-                            <th>Stock/g</th>
+                            <th>Amount/g</th>
                             <th>Status</th>
                           </tr>
                         </thead>
                         <tbody>
                         <?php
-                          $query = "SELECT * FROM `stok-barang` ORDER BY id ASC";;
-                          $result = mysqli_query($conn, $query);
-
-                          $no = 1;
-
-                          // Periksa apakah query berhasil dijalankan
-                          if ($result) {
-                              while ($row = mysqli_fetch_assoc($result)) {
-                          ?>
-                           <tr>
-                               <td><img src="../../assets/images/<?php echo $row['Image']; ?>" alt="logo" style="width: 50px; height: 50px; " /></td>
-                               <td><?php echo $row['nama_barang']; ?></td>
-                               <td><?php echo $row['Jumlah']; ?></td>
-                               <td><label class="badge <?php if($row['Jumlah'] <= 50 && $row['Jumlah'] != 0){
-                                 echo "badge-warning";
-                               }if($row['Jumlah']>=50){
-                                 echo "badge-success";
-                               }if($row['Jumlah']==0){
-                                 echo "badge-danger";
-                               } ?>"><?php
-                               if ($row['Jumlah'] == 0 ) {
-                                 echo "Out Of Stock";
-                             } elseif ($row['Jumlah'] <= 50 && $row['Jumlah'] != 0) {
-                               echo "Almost";
-                             } elseif ($row['Jumlah'] >= 50 ) {
-                                 echo "Available";
-                             }
-                               ?></label></td>
-                           </tr>
-                          <?php
-                                  $no++;
-                              }
-                          } else {
-                              echo "Error: " . $query . "<br>" . mysqli_error($conn);
+                        $query = "SELECT * FROM stok";;
+                        $result = mysqli_query($conn, $query);
+                        
+                        $no = 1;
+                        
+                        // Periksa apakah query berhasil dijalankan
+                        if ($result) {
+                            while ($row = mysqli_fetch_assoc($result)) { ?>
+                                <tr>
+                                    <td>
+                                      <img src="../../assets/images/stok/<?= $row['fotoBarang']; ?>" alt="logo" style="width: 50px; height: 50px; " />
+                                    </td>
+                                    <td>
+                                      <?= $row['namaBarang']; ?>
+                                    </td>
+                                    <td>
+                                      <?= $row['stokBarang']; ?>
+                                    </td>
+                                    <td>
+                                      <label class="badge 
+                                        <?php if($row['stokBarang']==0){
+                                            echo "badge-danger";
+                                          }if($row['stokBarang'] <= 10000 && $row['stokBarang'] != 0){
+                                            echo "badge-warning";
+                                          }if($row['stokBarang']>10000){
+                                            echo "badge-success";
+                                          } 
+                                        ?>"
+                                      >
+                                      <?php
+                                        if ($row['stokBarang'] == 0 ) {
+                                          echo "Out Of Stock";
+                                        } elseif ($row['stokBarang'] <= 10000 && $row['stokBarang'] != 0) {
+                                          echo "Almost";
+                                        } elseif ($row['stokBarang'] > 10000 ) {
+                                          echo "Available";
+                                        }
+                                      ?>
+                                    </label>
+                                  </td>
+                                </tr>
+                        <?php
+                          $no++;
                           }
-                          ?>          
+                        } else {
+                            echo "Error: " . $query . "<br>" . mysqli_error($conn);
+                        } ?>
                         </tbody>
                       </table>
                     </div>
                   </div>
                 </div>
               </div>
+              <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Transaction History</h4>
+                    <div class="table-responsive">
+                      <table class="table table-dark">
+                        <thead>
+                          <tr>
+                            <th> No </th>
+                            <th> Date </th>
+                            <th> Transaction Details </th>
+                            <th> Total Price </th>
+                            <th> Status </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <?php $no = 1 ?>
+                          <?php foreach ($riwayattransaksi as $trs) : ?>
+                          <tr>
+                            <td>
+                              <?= $no ?>
+                            </td>
+                            <td>
+                              <?= $trs["tanggalTransaksi"] ?>
+                            </td>
+                            <td> 
+                              <a class="nav-link" href="orderdetail.php?id=<?= $trs["idTransaksi"]?>">
+                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
+                              </a>
+                            </td>
+                            <td>
+                              <?= $trs["totalHarga"]; ?>
+                            </td>
+                            <td>
+                                <label class="<?= $statusclass[$trs['status']] ?>"><?= $status[$trs["status"]] ?></label>
+                            </td>
+                          </tr>
+                          <?php $no++ ?>
+                          <?php endforeach; ?>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <div class="col-lg-6 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
@@ -313,48 +388,7 @@ if (!isset($_SESSION['username'])) {
                   </div>
                 </div>
               </div>
-              <div class="col-lg-6 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
-                    <h4 class="card-title">Transaction History</h4>
-                    <div class="table-responsive">
-                      <table class="table table-dark">
-                        <thead>
-                          <tr>
-                            <th> No </th>
-                            <th> Date </th>
-                            <th> Detail Transaction </th>
-                            <th> Total Price </th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td> 1 </td>
-                            <td> May 15, 2015 </td>
-                            <td>
-                            <a class="nav-link" href="orderdetail.php">
-                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
-                              </a> 
-                            </td>
-                            <td> RP 250.000 </td>
-                          </tr>
-                          <tr>
-                            <td> 2 </td>
-                            <td> July 1, 2015 </td>
-                            <td>
-                            <a class="nav-link" href="orderdetail.php">
-                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
-                              </a> 
-                            </td>
-                            <td> RP 125.000 </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
+              
 
           <footer class="footer">
           </footer>
