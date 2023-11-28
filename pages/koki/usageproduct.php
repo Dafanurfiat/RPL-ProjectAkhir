@@ -240,7 +240,8 @@ require "functions.php";
                              <td>
                                <?= $no ?>
                              </td>
-                              <td><img src="../../assets/images/cabai.png" style="width:50px; height:50px;" alt="logo" />
+                              <td>
+                                <img src="../../assets/images/makanan/<?= $brg['gambar'] ?>" style="width:50px; height:50px;" alt="logo" />
                               </td>
                               <td>
                                 <?php $alias = $brg["idMakanan"]; ?>
@@ -280,8 +281,6 @@ require "functions.php";
                       <div class="d-grid gap-2 d-md-flex justify-content-md-end" >
                             <button type="submit" class="btn btn-outline-success btn-icon-text" name="submit">
                             <i class="mdi mdi-plus"></i> Create </button>
-                            <button type="submit" class="btn btn-outline-danger btn-icon-text" name="submit">
-                            <i class="mdi mdi-close-box"></i> Cancel </button>
                       </div>
                       </footer>
                     </form>  

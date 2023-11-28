@@ -28,7 +28,7 @@
 	// read
 	function read_detail_data_usage($id){
 
-		$dtransaksi = read_data("SELECT m.namaMakanan, d.jumlahBarang, d.idMakanan
+		$dtransaksi = read_data("SELECT m.namaMakanan, d.jumlahBarang, d.idMakanan, m.gambar
 								 FROM detailOrders d
 								 JOIN makanan m on m.idMakanan=d.idMakanan
 								 WHERE d.idOrder=$id and d.jumlahBarang>0");

@@ -206,6 +206,7 @@ $transaksi = read_data("SELECT * FROM orders WHERE idOrder=$id");
                         <thead>
                           <tr>
                             <th>No</th>
+                            <th>Picture</th>
                             <th>Menu</th>
                             <th>Amount</th>
                             <th>Price</th>
@@ -218,6 +219,9 @@ $transaksi = read_data("SELECT * FROM orders WHERE idOrder=$id");
                            <tr>
                              <td>
                                <?= $no ?>
+                             </td>
+                             <td>
+                               <img src="../../assets/images/makanan/<?= $dtrs['gambar'] ?>" style="width:50px; height:50px;" alt="logo" />
                              </td>
                               <td>
                                 <?= $dtrs["namaMakanan"] ?>
