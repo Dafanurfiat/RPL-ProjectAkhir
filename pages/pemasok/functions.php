@@ -145,4 +145,11 @@
 		return $namaFile;
 	}
 
+	function delete_stok($id){
+		global $conn;
+		$query = "DELETE FROM stok WHERE idBarang='$id'";
+		mysqli_query($conn, $query);
+		return mysqli_affected_rows($conn);
+	}
+
 ?>
