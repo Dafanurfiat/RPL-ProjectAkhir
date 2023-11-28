@@ -189,7 +189,7 @@ if(isset($_POST["submit"])){
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
                   <h6 class="p-3 mb-0">Profile</h6>
-                  <a class="dropdown-item preview-item">
+                  <a href="..\..\login.php" class="dropdown-item preview-item">
                     <div class="preview-thumbnail">
                       <div class="preview-icon bg-dark rounded-circle">
                         <i class="mdi mdi-logout text-danger"></i>
@@ -250,7 +250,6 @@ if(isset($_POST["submit"])){
                                     <label class="form-label" for="<?= $alias ?>" ></label>
                                     <input type="number" name="<?= $alias ?>" id="<?= $alias ?>" class="form-control" style="background-color: white; color:black; width: 70px; height: 30px;" value="0" min="0" required/>
                                   </div>
-                                </label>
                               </td>
                             </tr>
                             <?php $no++ ?>
