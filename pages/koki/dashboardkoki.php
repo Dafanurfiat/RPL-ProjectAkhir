@@ -8,6 +8,23 @@ if (!isset($_SESSION['username'])) {
     header("Location: ../../login.php");
     exit(); // Terminate script execution after the redirect
 }
+
+$riwayattransaksi = read_data("SELECT * FROM orders");
+$transaksi = read_data("SELECT * 
+              FROM transaksi 
+              WHERE 
+              status IN (0,1,2,3,4) AND
+              isKokiReq=1");
+$statusReq = ["0"=>"Pending", "1"=>"Accept", "2"=>"Decline"];
+$status = ["0"=>"Unapprove", "1"=>"Pending", "2"=>"OnProgress", "3"=>"Done", "4"=>"Decline"];
+$statusreqclass = ["0"=>"badge badge-grey", 
+                "1"=>"badge badge-success", 
+                "2"=>"badge badge-danger"];
+$statusclass = ["0"=>"badge badge-grey", 
+                "1"=>"badge badge-grey", 
+                "2"=>"badge badge-warning", 
+                "3"=>"badge badge-success", 
+                "4"=>"badge badge-danger"];
 ?>
 
 <!DOCTYPE html>
@@ -198,7 +215,7 @@ if (!isset($_SESSION['username'])) {
                   <div class="card-body">
                     <h4 class="card-title">Stock List</h4>
                     <div class="table-responsive">
-                      <table class="table" >
+                      <table class="table">
                         <thead>
                           <tr>
                             <th>Picture</th>
@@ -208,50 +225,61 @@ if (!isset($_SESSION['username'])) {
                           </tr>
                         </thead>
                         <tbody>
-                                                  <?php
-                          $query = "SELECT * FROM `stok-barang` ORDER BY id ASC";;
-                          $result = mysqli_query($conn, $query);
-
-                          $no = 1;
-
-                          // Periksa apakah query berhasil dijalankan
-                          if ($result) {
-                              while ($row = mysqli_fetch_assoc($result)) {
-                          ?>
-                                  <tr>
-                                      <td><img src="../../assets/images/<?php echo $row['Image']; ?>" alt="logo" style="width: 50px; height: 50px; " /></td>
-                                      <td><?php echo $row['nama_barang']; ?></td>
-                                      <td><?php echo $row['Jumlah']; ?></td>
-                                      <td><label class="badge <?php if($row['Jumlah'] <= 50 && $row['Jumlah'] != 0){
-                                        echo "badge-warning";
-                                      }if($row['Jumlah']>=50){
-                                        echo "badge-success";
-                                      }if($row['Jumlah']==0){
-                                        echo "badge-danger";
-                                      } ?>"><?php
-                                      if ($row['Jumlah'] == 0 ) {
-                                        echo "Out Of Stock";
-                                    } elseif ($row['Jumlah'] <= 50 && $row['Jumlah'] != 0) {
-                                      echo "Almost";
-                                    } elseif ($row['Jumlah'] >= 50 ) {
-                                        echo "Available";
-                                    }
-                                      ?></label></td>
-                                  </tr>
-                          <?php
-                                  $no++;
-                              }
-                          } else {
-                              echo "Error: " . $query . "<br>" . mysqli_error($conn);
+                        <?php
+                        $query = "SELECT * FROM stok";;
+                        $result = mysqli_query($conn, $query);
+                        
+                        $no = 1;
+                        
+                        // Periksa apakah query berhasil dijalankan
+                        if ($result) {
+                            while ($row = mysqli_fetch_assoc($result)) { ?>
+                                <tr>
+                                    <td>
+                                      <img src="../../assets/images/stok/<?= $row['fotoBarang']; ?>" alt="logo" style="width: 50px; height: 50px; " />
+                                    </td>
+                                    <td>
+                                      <?= $row['namaBarang']; ?>
+                                    </td>
+                                    <td>
+                                      <?= $row['stokBarang']; ?>
+                                    </td>
+                                    <td>
+                                      <label class="badge 
+                                        <?php if($row['stokBarang']==0){
+                                            echo "badge-danger";
+                                          }if($row['stokBarang'] <= 10000 && $row['stokBarang'] != 0){
+                                            echo "badge-warning";
+                                          }if($row['stokBarang']>10000){
+                                            echo "badge-success";
+                                          } 
+                                        ?>"
+                                      >
+                                      <?php
+                                        if ($row['stokBarang'] == 0 ) {
+                                          echo "Out Of Stock";
+                                        } elseif ($row['stokBarang'] <= 10000 && $row['stokBarang'] != 0) {
+                                          echo "Almost";
+                                        } elseif ($row['stokBarang'] > 10000 ) {
+                                          echo "Available";
+                                        }
+                                      ?>
+                                    </label>
+                                  </td>
+                                </tr>
+                        <?php
+                          $no++;
                           }
-                          ?>          
+                        } else {
+                            echo "Error: " . $query . "<br>" . mysqli_error($conn);
+                        } ?>
                         </tbody>
                       </table>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-lg-8 grid-margin stretch-card">
+              <div class="col-lg-7 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Request History</h4>
@@ -263,36 +291,42 @@ if (!isset($_SESSION['username'])) {
                             <th> Date </th>
                             <th> Request Details </th>
                             <th> Total Price </th>
+                            <th>Status Persetujuan<br><br>Status Pengiriman</th>
                           </tr>
                         </thead>
                         <tbody>
+                          <?php $no = 1 ?>
+                          <?php foreach ($transaksi as $trs) : ?>
                           <tr>
-                            <td> 1 </td>
-                            <td> May 15, 2015 </td>
                             <td>
-                            <a class="nav-link" href="requestdetail.php">
-                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
-                              </a> 
+                              <?= $no ?>
                             </td>
-                            <td> RP 250.000 </td>
-                          </tr>
-                          <tr>
-                            <td> 2 </td>
-                            <td> July 1, 2015 </td>
                             <td>
-                            <a class="nav-link" href="requestdetail.php">
-                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
-                              </a> 
+                              <?= $trs["tanggalTransaksi"] ?>
                             </td>
-                            <td> RP 125.000 </td>
+                            <td>
+                              <a class="nav-link" href="requestdetail.php?id=<?= $trs["idTransaksi"]?>">
+                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
+                              </a>
+                            </td>
+                            <td>
+                              <?= $trs["totalHarga"]; ?>
+                            </td>
+                            <td>
+                              <label class="<?= $statusreqclass[$trs['statusReq']] ?>"><?= $statusReq[$trs["statusReq"]] ?></label>
+                              <br><br>
+                              <label class="<?= $statusclass[$trs['status']] ?>"><?= $status[$trs["status"]] ?></label>
+                            </td>
                           </tr>
+                          <?php $no++ ?>
+                          <?php endforeach; ?>
                         </tbody>
                       </table>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-lg-4 grid-margin stretch-card">
+              <div class="col-lg-5 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Ingredient Usage History</h4>
@@ -300,30 +334,33 @@ if (!isset($_SESSION['username'])) {
                       <table class="table table-dark">
                         <thead>
                           <tr>
-                            <th> No </th>
-                            <th> Date </th>
-                            <th> Ingredient Usage Details </th>
+                            <th>No</th>
+                            <th>Date</th>
+                            <th>Total Price</th>
+                            <th>Detail</th>
                           </tr>
                         </thead>
                         <tbody>
+                          <?php $no = 1 ?>
+                          <?php foreach ($riwayattransaksi as $trs) : ?>
                           <tr>
-                            <td> 1 </td>
-                            <td> May 15, 2015 </td>
                             <td>
-                            <a class="nav-link" href="detailusageproduct.php">
+                              <?= $no ?>
+                            </td>
+                            <td>
+                              <?= $trs["tanggalOrder"] ?>
+                            </td>
+                            <td>
+                              <?= $trs["totalHarga"]; ?>
+                            </td>
+                            <td>
+                              <a class="nav-link" href="detailusageproduct.php?id=<?= $trs["idOrder"]?>">
                                 <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
                               </a> 
                             </td>
                           </tr>
-                          <tr>
-                            <td> 2 </td>
-                            <td> July 1, 2015 </td>
-                            <td>
-                            <a class="nav-link" href="detailusageproduct.php">
-                                <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
-                              </a> 
-                            </td>
-                          </tr>
+                          <?php $no++ ?>
+                          <?php endforeach; ?>
                         </tbody>
                       </table>
                     </div>
