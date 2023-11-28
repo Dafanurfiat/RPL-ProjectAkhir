@@ -225,7 +225,7 @@ if (!isset($_SESSION['username'])) {
                         </thead>
                         <tbody>
                         <?php
-                        $query = "SELECT * FROM stok";;
+                        $query = "SELECT * FROM makanan";;
                         $result = mysqli_query($conn, $query);
                         
                         $no = 1;
@@ -235,13 +235,13 @@ if (!isset($_SESSION['username'])) {
                             while ($row = mysqli_fetch_assoc($result)) { ?>
                                 <tr>
                                     <td>
-                                      <img src="../../assets/images/stok/<?= $row['fotoBarang']; ?>" alt="logo" style="width: 50px; height: 50px; " />
+                                      <img src="../../assets/images/makanan/<?= $row['gambar']; ?>" alt="logo" style="width: 50px; height: 50px; " />
                                     </td>
                                     <td>
-                                      <?= $row['namaBarang']; ?>
+                                      <?= $row['namaMakanan']; ?>
                                     </td>
                                     <td>
-                                      <?= $row['stokBarang']; ?>
+                                      <?= $row['hargaMakanan'] ?>
                                     </td>
                                 </tr>
                         <?php

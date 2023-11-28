@@ -8,6 +8,27 @@ if (!isset($_SESSION['username'])) {
     exit(); // Terminate script execution after the redirect
 }
 require "functions.php";
+if(isset($_POST["submit"])){
+    
+    // var_dump($_POST);
+    // var_dump($_FILES);
+    // die();
+    if(create_data_makanan($_POST) > 0){
+      echo "
+        <script>
+          alert('data berhasil ditambahkan');
+          document.location.href='food.php';
+        </script>
+      ";
+    }else{
+      echo "
+        <script>
+          alert('data gagal ditambahkan');
+          document.location.href='food.php';
+        </script>
+      ";
+    }
+  }
 ?>
 
 <!DOCTYPE html>
@@ -216,6 +237,7 @@ require "functions.php";
                   <div class="card-body">
                     <h4 class="card-title">Add Food</h4>
                     <div class="table-responsive">
+                      <form action="" method="post" enctype="multipart/form-data">
                       <table class="table">
                         <thead>
                           <tr>
@@ -226,22 +248,34 @@ require "functions.php";
                         </thead>
                         <tbody>
                         <tr>
-                        <td>Food</td>
-                        <td>Ketoprak</td>
+                          <td>
+                            <label for="nama">
+                              Nama Makanan:
+                            </label>
+                          </td>
+                          <td>
+                            <input type="text" name="nama", id="nama" required>
+                          </td>
                         </tr>
                         <tr>
-                        <td>Price</td>
-                        <td>Rp 45.000</td>
+                          <td>
+                            <label for="harga">
+                              Harga:
+                            </label>
+                          </td>
+                          <td>
+                            <input type="number" name="harga" id="harga" required min="0" value="0">
+                          </td>
                         </tr>
                         <tr>
-                        <td>Photo</td>
-                        <td>
-                        <form action="proses_upload.php" method="post" enctype="multipart/form-data" >
-                        <div class="form-group">
-                          <label for="foto"></label>
-                          <input type="file" class="form-control-file" id="foto" name="foto" accept="image/*" style="background-color: #ffffff; padding: 5px;">
-                        </div>
-                        </td>
+                          <td>
+                            <label for="foto">
+                              Foto:
+                            </label>
+                          </td>
+                          <td>
+                            <input type="file" name="gambar" id="gambar">
+                          </td>
                         </tr>
                         </tbody>
                       </table>
@@ -250,6 +284,7 @@ require "functions.php";
                             <button type="submit" class="btn btn-outline-primary btn-icon-text" name="submit"> Submit </button>
                       </div>
                       </footer>
+                    </form>
                     </div>
                   </div>
                 </div>
