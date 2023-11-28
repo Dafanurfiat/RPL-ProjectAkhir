@@ -8,6 +8,27 @@ if (!isset($_SESSION['username'])) {
     exit(); // Terminate script execution after the redirect
 }
 require "functions.php";
+if(isset($_POST["submit"])){
+    
+    // var_dump($_POST);
+    // var_dump($_FILES);
+    // die();
+    if(create_data_barang($_POST) > 0){
+      echo "
+        <script>
+          alert('data berhasil ditambahkan');
+          document.location.href='stockpemasok.php';
+        </script>
+      ";
+    }else{
+      echo "
+        <script>
+          alert('data gagal ditambahkan');
+          document.location.href='stockpemasok.php';
+        </script>
+      ";
+    }
+  }
 ?>
 
 <!DOCTYPE html>
@@ -48,7 +69,7 @@ require "functions.php";
                 </div>
                 <div class="profile-name">
                   <h5 class="mb-0 font-weight-normal"><?php echo $_SESSION['username']; ?></h5>
-                  <span>Pemasok</span>
+                  <span>Manager</span>
                 </div>
               </div>
               <div class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list" aria-labelledby="profile-dropdown">
@@ -59,7 +80,7 @@ require "functions.php";
             <span class="nav-link">Navigation</span>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="dashboardpemasok.php">
+            <a class="nav-link" href="dashboard.php">
               <span class="menu-icon">
                 <i class="mdi mdi-home-variant"></i>
               </span>
@@ -67,7 +88,7 @@ require "functions.php";
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="addingredient.php">
+            <a class="nav-link" href="stock.php">
               <span class="menu-icon">
                 <i class="mdi mdi-package-variant-closed"></i>
               </span>
@@ -75,15 +96,31 @@ require "functions.php";
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="transactiondetail.php">
+            <a class="nav-link" href="addfood.php">
               <span class="menu-icon">
-                <i class="mdi mdi-file-plus"></i>
+                <i class="mdi mdi-food"></i>
               </span>
-              <span class="menu-title">Transaction</span>
+              <span class="menu-title">Food</span>
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="deliverypemasok.php">
+            <a class="nav-link" href="order.php">
+              <span class="menu-icon">
+                <i class="mdi mdi-file-document"></i>
+              </span>
+              <span class="menu-title">Order</span>
+            </a>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="staff.php">
+              <span class="menu-icon">
+                <i class="mdi mdi-account"></i>
+              </span>
+              <span class="menu-title">Staff</span>
+            </a>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="delivery.php">
               <span class="menu-icon">
                 <i class="mdi mdi-truck"></i>
               </span>
@@ -198,8 +235,9 @@ require "functions.php";
               <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Add Ingredients</h4>
+                    <h4 class="card-title">Add Food</h4>
                     <div class="table-responsive">
+                      <form action="" method="post" enctype="multipart/form-data">
                       <table class="table">
                         <thead>
                           <tr>
@@ -210,22 +248,34 @@ require "functions.php";
                         </thead>
                         <tbody>
                         <tr>
-                        <td>Name</td>
-                        <td>Jahe</td>
+                          <td>
+                            <label for="nama">
+                              Nama Barang:
+                            </label>
+                          </td>
+                          <td>
+                            <input type="text" name="nama", id="nama" required>
+                          </td>
                         </tr>
                         <tr>
-                        <td>Price</td>
-                        <td>Rp 45.000</td>
+                          <td>
+                            <label for="harga">
+                              Harga:
+                            </label>
+                          </td>
+                          <td>
+                            <input type="number" name="harga" id="harga" required min="0" value="0">
+                          </td>
                         </tr>
                         <tr>
-                        <td>Photo</td>
-                        <td>
-                        <form action="proses_upload.php" method="post" enctype="multipart/form-data" >
-                        <div class="form-group">
-                          <label for="foto"></label>
-                          <input type="file" class="form-control-file" id="foto" name="foto" accept="image/*" style="background-color: #ffffff; padding: 5px;">
-                        </div>
-                        </td>
+                          <td>
+                            <label for="foto">
+                              Foto:
+                            </label>
+                          </td>
+                          <td>
+                            <input type="file" name="gambar" id="gambar">
+                          </td>
                         </tr>
                         </tbody>
                       </table>
@@ -234,6 +284,7 @@ require "functions.php";
                             <button type="submit" class="btn btn-outline-primary btn-icon-text" name="submit"> Submit </button>
                       </div>
                       </footer>
+                    </form>
                     </div>
                   </div>
                 </div>

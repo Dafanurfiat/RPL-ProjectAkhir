@@ -225,7 +225,7 @@ if (!isset($_SESSION['username'])) {
                                       <?= $row['namaBarang']; ?>
                                     </td>
                                     <td>
-                                      <?= $row['stokBarang']; ?>
+                                      <?= $row['hargaBarang']; ?>
                                     </td>
                                 </tr>
                         <?php

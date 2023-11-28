@@ -56,6 +56,18 @@
 		}
 		return mysqli_affected_rows($conn);
 	}
+	function create_data_barang($new_data){
+		global $conn;
+		$namaBarang = $_POST['nama'];
+		$hargaBarang = $_POST['harga'];
+		$gambar = upload();
+		if(!$gambar){
+			return false;
+		}
+		$query = "INSERT INTO stok VALUES (null,'$namaBarang', 0, '$hargaBarang', '$gambar')";
+		mysqli_query($conn, $query);
+		return mysqli_affected_rows($conn);
+	}
 
 
 	function approve($id){
@@ -95,5 +107,42 @@
 		return $harga; 
 	}
 
+	function upload(){
+		
+		$namaFile = $_FILES['gambar']['name'];
+		$ukuranFile = $_FILES['gambar']['size'];
+		$error = $_FILES['gambar']['error']; 
+		$tmpName = $_FILES['gambar']['tmp_name'];
+
+		$ekstansiFileAcc = ['jpg', 'jpeg', 'png'];
+		
+		// cek apakah tidak ada gambar yang diupload 
+		if ($error === 4){
+			echo "<script>
+				  	alert('pilih gambar terlebih dahulu');
+				  </script>";
+			return false;
+		}
+
+		// cek apakah yang diupload adalah gambar
+		$eksistensiGambar = explode('.', $namaFile);
+		$eksistensiGambar = strtolower(end($eksistensiGambar));
+		if (!in_array($eksistensiGambar, $ekstansiFileAcc)){ 
+			echo "<script>
+				  	alert('yang anda upload bukan gambar');
+				  </script>";
+		}
+
+		if ($ukuranFile > 5000000){ 
+			echo "<script>
+				  	alert('terlalu besar bro');
+				  </script>";
+			return false;
+		}
+
+		move_uploaded_file($tmpName, 'C:/xampp/htdocs/RPL-ProjectAkhir/assets/images/stok/'.$namaFile);
+
+		return $namaFile;
+	}
 
 ?>
