@@ -192,7 +192,7 @@ $transaksi = read_data("SELECT * FROM orders WHERE idOrder=$id");
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <a class="nav-link" href="#" onclick="goBack()">
+              <a class="nav-link" href="usagekoki.php">
                 <button type="button" class="btn btn-outline-danger btn-icon-text"> <i class="mdi mdi-code-less-than" ></i> Back </button>  
               </a> 
             </div>
@@ -233,10 +233,14 @@ $transaksi = read_data("SELECT * FROM orders WHERE idOrder=$id");
                                   <span type="button" class="btn btn-outline-success btn-icon-text"> <i class="mdi mdi-eye"></i> See </span>
                                 </a>
                                 <div class="collapse" id="ui-basic1">
+                                  <?php $ingredients = cariIngredients($dtrs["idMakanan"]) ?>
+
                                   <ul class="nav flex-column sub-menu">
-                                    <li class="nav-item">Cabai</li>
-                                    <li class="nav-item">Beras</li>
-                                    <li class="nav-item">Kecaap</li>
+                                    <?php foreach ($ingredients as $ing) : ?>
+                                      <li class="nav-item">
+                                        <?= $ing["namaBarang"] ?>
+                                      </li>
+                                    <?php endforeach; ?>
                                   </ul>
                                 </div>
                               </td>

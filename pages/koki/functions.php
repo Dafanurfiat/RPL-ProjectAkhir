@@ -109,5 +109,11 @@
 		return $harga; 
 	}
 
+	function cariIngredients($id){
+		global $conn;
+		$ingredients = read_data("SELECT k.jumlahBarang, s.namaBarang FROM komposisi k JOIN stok s ON s.IdBarang=k.idBarang WHERE idMakanan='$id'");
+		return $ingredients;
+	}
+
 
 ?>
