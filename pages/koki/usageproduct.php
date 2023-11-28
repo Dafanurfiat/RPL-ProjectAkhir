@@ -9,9 +9,25 @@ if (!isset($_SESSION['username'])) {
 }
 
 require "functions.php";
-$id = $_GET["id"];
-$dtransaksi = read_detail_data_usage($id);
-$transaksi = read_data("SELECT * FROM orders WHERE idOrder=$id");
+  $barang = read_data("SELECT * FROM makanan");
+  if(isset($_POST["submit"])){
+    
+  if(create_data_usage($_POST) > 0){
+    echo "
+      <script>
+        alert('data berhasil ditambahkan');
+        document.location.href='usage.php';
+      </script>
+    ";
+  }else{
+    echo "
+      <script>
+        alert('data gagal ditambahkan');
+        document.location.href='usage.php';
+      </script>
+    ";
+  }
+}
 
 ?>
 
@@ -205,20 +221,21 @@ $transaksi = read_data("SELECT * FROM orders WHERE idOrder=$id");
                   <div class="card-body">
                     <h4 class="card-title">List Menu</h4>
                     <div class="table-responsive">
+                      <form action="" method="post">
                       <table class="table">
                         <thead>
                           <tr>
                             <th>No</th>
                             <th>Picture</th>
                             <th>Menu</th>
-                            <th>Amount</th>
                             <th>Price</th>
                             <th>Ingridients</th>
+                            <th>Amount</th>
                           </tr>
                         </thead>
                         <tbody>
                           <?php $no = 1 ?>
-                          <?php foreach ($dtransaksi as $dtrs) : ?>
+                          <?php foreach($barang as $brg) : ?>
                            <tr>
                              <td>
                                <?= $no ?>
@@ -226,44 +243,48 @@ $transaksi = read_data("SELECT * FROM orders WHERE idOrder=$id");
                               <td><img src="../../assets/images/cabai.png" style="width:50px; height:50px;" alt="logo" />
                               </td>
                               <td>
-                                <?= $dtrs["namaMakanan"] ?>
+                                <?php $alias = $brg["idMakanan"]; ?>
+                                <label for="<?= $alias ?>"><?= $brg["namaMakanan"] ?></label>
                               </td>
                               <td>
-                                <div class="form-outline" data-mdb-input-init>
-                                  <label class="form-label" for="typeNumber"></label>
-                                    <input type="number" id="typeNumber1" class="form-control" style="background-color: white; color:black; width: 70px; height: 30px;" value="0" min="0" />
-                                    </div>
-                                </td>
-                                <td>
-                                  <?= cariHarga_usage($dtrs["idMakanan"]) ?>
-                                </td>
-                                <td>
-                                    <li>
-                                        <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic1">
-                                            <span type="button" class="btn btn-outline-success btn-icon-text"> <i class="mdi mdi-eye"></i> See </span>
-                                        </a>
-                                        <div class="collapse" id="ui-basic1">
-                                            <ul class="nav flex-column sub-menu">
-                                                <li class="nav-item">Cabai</li>
-                                                <li class="nav-item">Beras</li>
-                                                <li class="nav-item">Kecaap</li>
-                                            </ul>
-                                        </div>
-                                    </li>
+                                <?= $brg["hargaMakanan"] ?>
+                              </td>
+                              <td>
+                                  <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic1">
+                                    <span type="button" class="btn btn-outline-success btn-icon-text"> <i class="mdi mdi-eye"></i> See </span>
+                                  </a>
+                                  <div class="collapse" id="ui-basic1">
+                                  <?php $ingredients = cariIngredients($brg["idMakanan"]) ?>
+
+                                  <ul class="nav flex-column sub-menu">
+                                    <?php foreach ($ingredients as $ing) : ?>
+                                      <li class="nav-item">
+                                        <?= $ing["namaBarang"] ?>
+                                      </li>
+                                    <?php endforeach; ?>
+                                  </ul>
+                                </div>
+                              <td>
+                                <div class="form-outline" data-mdb-input-init >
+                                    <label class="form-label" for="<?= $alias ?>" ></label>
+                                    <input type="number" name="<?= $alias ?>" id="<?= $alias ?>" class="form-control" style="background-color: white; color:black; width: 70px; height: 30px;" value="0" min="0" required/>
+                                  </div>
                                 </td>
                               <?php $no++ ?>
                               <?php endforeach; ?>
                             </tr>
                         </tbody>
                       </table>
+
                       <footer class="footer">
                       <div class="d-grid gap-2 d-md-flex justify-content-md-end" >
-                            <button type="button" class="btn btn-outline-success btn-icon-text">
+                            <button type="submit" class="btn btn-outline-success btn-icon-text" name="submit">
                             <i class="mdi mdi-plus"></i> Create </button>
-                            <button type="button" class="btn btn-outline-danger btn-icon-text">
+                            <button type="submit" class="btn btn-outline-danger btn-icon-text" name="submit">
                             <i class="mdi mdi-close-box"></i> Cancel </button>
                       </div>
                       </footer>
+                    </form>  
                     </div>
                   </div>
                 </div>
