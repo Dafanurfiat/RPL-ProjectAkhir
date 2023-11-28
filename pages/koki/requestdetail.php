@@ -63,7 +63,7 @@ $transaksi = read_data("SELECT * FROM transaksi WHERE idTransaksi=$id");
             <span class="nav-link">Navigation</span>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="dashboard.php">
+            <a class="nav-link" href="dashboardkoki.php">
               <span class="menu-icon">
                 <i class="mdi mdi-home-variant"></i>
               </span>
@@ -71,7 +71,7 @@ $transaksi = read_data("SELECT * FROM transaksi WHERE idTransaksi=$id");
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="stock.php">
+            <a class="nav-link" href="stockkoki.php">
               <span class="menu-icon">
                 <i class="mdi mdi-package-variant-closed"></i>
               </span>
@@ -79,37 +79,20 @@ $transaksi = read_data("SELECT * FROM transaksi WHERE idTransaksi=$id");
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="orderdetail.php">
+            <a class="nav-link" href="usagekoki.php">
               <span class="menu-icon">
-                <i class="mdi mdi-file-document"></i>
+                <i class="mdi mdi-cube"></i>
               </span>
-              <span class="menu-title">Order</span>
+              <span class="menu-title">Usage</span>
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="staff.php">
+            <a class="nav-link" href="requestdetail.php">
               <span class="menu-icon">
-                <i class="mdi mdi-account"></i>
+                <i class="mdi mdi-window-restore"></i>
               </span>
-              <span class="menu-title">Staff</span>
+              <span class="menu-title">ReStock</span>
             </a>
-          </li>
-          <li class="nav-item menu-items">
-            <a class="nav-link" href="delivery.php">
-              <span class="menu-icon">
-                <i class="mdi mdi-truck"></i>
-              </span>
-              <span class="menu-title">Delivery</span>
-            </a>
-          </li>
-          <li class="nav-item menu-items">
-            <a class="nav-link" href="report.php">
-              <span class="menu-icon">
-                <i class="mdi mdi-chart-bar"></i>
-              </span>
-              <span class="menu-title">Report</span>
-            </a>
-          </li>
         </ul>
       </nav>
       <!-- partial -->
