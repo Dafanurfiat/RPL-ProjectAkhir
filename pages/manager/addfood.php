@@ -48,7 +48,7 @@ require "functions.php";
                 </div>
                 <div class="profile-name">
                   <h5 class="mb-0 font-weight-normal"><?php echo $_SESSION['username']; ?></h5>
-                  <span>Pemasok</span>
+                  <span>Manager</span>
                 </div>
               </div>
               <div class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list" aria-labelledby="profile-dropdown">
