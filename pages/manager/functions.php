@@ -145,5 +145,10 @@
 
 		return $namaFile;
 	}
-
+	function delete_makanan($id){
+		global $conn;
+		$query = "DELETE FROM makanan WHERE idMakanan='$id'";
+		mysqli_query($conn, $query);
+		return mysqli_affected_rows($conn);
+	}
 ?>

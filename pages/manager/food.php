@@ -221,6 +221,7 @@ if (!isset($_SESSION['username'])) {
                             <th>Picture</th>
                             <th>Food</th>
                             <th>Price</th>
+                            <th>Action</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -242,6 +243,11 @@ if (!isset($_SESSION['username'])) {
                                     </td>
                                     <td>
                                       <?= $row['hargaMakanan'] ?>
+                                    </td>
+                                    <td>
+                                      <a href="delete_makanan.php?id=<?= $row['idMakanan']?>">
+                                        <button type="button" class="btn btn-outline-danger btn-icon-text"> Delete </button>
+                                      </a>
                                     </td>
                                 </tr>
                         <?php
