@@ -14,6 +14,7 @@ if(isset($_POST["submit"])){
     // var_dump($_FILES);
     // die();
     if(create_data_makanan($_POST) > 0){
+        //die();
       echo "
         <script>
           alert('data berhasil ditambahkan');

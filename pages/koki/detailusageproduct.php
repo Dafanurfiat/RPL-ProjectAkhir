@@ -210,7 +210,6 @@ $transaksi = read_data("SELECT * FROM orders WHERE idOrder=$id");
                             <th>Menu</th>
                             <th>Amount</th>
                             <th>Price</th>
-                            <th>Ingredients</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -231,22 +230,6 @@ $transaksi = read_data("SELECT * FROM orders WHERE idOrder=$id");
                               </td>
                               <td>
                                 <?= cariHarga_usage($dtrs["idMakanan"]) ?>
-                              </td>
-                              <td>
-                                <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic1">
-                                  <span type="button" class="btn btn-outline-success btn-icon-text"> <i class="mdi mdi-eye"></i> See </span>
-                                </a>
-                                <div class="collapse" id="ui-basic1">
-                                  <?php $ingredients = cariIngredients($dtrs["idMakanan"]) ?>
-
-                                  <ul class="nav flex-column sub-menu">
-                                    <?php foreach ($ingredients as $ing) : ?>
-                                      <li class="nav-item">
-                                        <?= $ing["namaBarang"] ?>
-                                      </li>
-                                    <?php endforeach; ?>
-                                  </ul>
-                                </div>
                               </td>
                             </tr>
                             <?php $no++ ?>

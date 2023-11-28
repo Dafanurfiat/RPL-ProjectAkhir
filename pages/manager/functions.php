@@ -141,7 +141,7 @@
 			return false;
 		}
 
-		move_uploaded_file($tmpName, 'C:/xampp/htdocs/RPL-ProjectAkhir/assets/images/makanan/'.$namaFile);
+		move_uploaded_file($tmpName, 'C:/Xampp/htdocs/template/assets/images/makanan/'.$namaFile);
 
 		return $namaFile;
 	}

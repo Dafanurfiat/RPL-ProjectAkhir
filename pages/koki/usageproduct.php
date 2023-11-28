@@ -229,7 +229,6 @@ require "functions.php";
                             <th>Picture</th>
                             <th>Menu</th>
                             <th>Price</th>
-                            <th>Ingridients</th>
                             <th>Amount</th>
                           </tr>
                         </thead>
@@ -250,21 +249,6 @@ require "functions.php";
                               <td>
                                 <?= $brg["hargaMakanan"] ?>
                               </td>
-                              <td>
-                                  <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic1">
-                                    <span type="button" class="btn btn-outline-success btn-icon-text"> <i class="mdi mdi-eye"></i> See </span>
-                                  </a>
-                                  <div class="collapse" id="ui-basic1">
-                                  <?php $ingredients = cariIngredients($brg["idMakanan"]) ?>
-
-                                  <ul class="nav flex-column sub-menu">
-                                    <?php foreach ($ingredients as $ing) : ?>
-                                      <li class="nav-item">
-                                        <?= $ing["namaBarang"] ?>
-                                      </li>
-                                    <?php endforeach; ?>
-                                  </ul>
-                                </div>
                               <td>
                                 <div class="form-outline" data-mdb-input-init >
                                     <label class="form-label" for="<?= $alias ?>" ></label>

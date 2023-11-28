@@ -74,11 +74,11 @@ if (isset($_POST['submit'])) {
                 <form action="" method="POST">
                   <div class="form-group">
                     <label>Username or email *</label>
-                    <input type="email" name="email" class="form-control p_input" placeholder="Enter your username">
+                    <input type="email" name="email" style="color:white;" class="form-control p_input" placeholder="Enter your username">
                   </div>
                   <div class="form-group">
                     <label>Password *</label>
-                    <input type="password" name="password" class="form-control p_input" placeholder="Enter your password">
+                    <input type="password" name="password" style="color:white;" class="form-control p_input" placeholder="Enter your password">
                   </div>
                   <div class="text-center">
                     <button type="submit" name="submit" class="btn btn-outline-primary btn-block enter-btn">Login</button>
