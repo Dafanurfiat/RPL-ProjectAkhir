@@ -86,6 +86,14 @@ $statusclass = ["0"=>"badge badge-grey",
             </a>
           </li>
           <li class="nav-item menu-items">
+            <a class="nav-link" href="stockpemasok.php">
+              <span class="menu-icon">
+                <i class="mdi mdi-package-variant-closed"></i>
+              </span>
+              <span class="menu-title">Stock</span>
+            </a>
+          </li>
+          <li class="nav-item menu-items">
             <a class="nav-link" href="transactionpemasok.php">
               <span class="menu-icon">
                 <i class="mdi mdi-file-plus"></i>
@@ -291,7 +299,7 @@ $statusclass = ["0"=>"badge badge-grey",
                               <?= $trs["tanggalTransaksi"] ?>
                             </td>
                             <td>
-                              <a class="nav-link" href="transactiondetail.php">
+                              <a class="nav-link" href="transactiondetail.php?id=<?= $trs["idTransaksi"]?>">
                                 <button type="button" class="btn btn-outline-primary btn-icon-text"> Detail </button>  
                               </a> 
                             </td>

@@ -8,9 +8,6 @@ if (!isset($_SESSION['username'])) {
     exit(); // Terminate script execution after the redirect
 }
 require "functions.php";
-$id = $_GET["id"];
-$dtransaksi = read_detail_data($id);
-$transaksi = read_data("SELECT * FROM transaksi WHERE idTransaksi=$id");
 ?>
 
 <!DOCTYPE html>
@@ -70,7 +67,7 @@ $transaksi = read_data("SELECT * FROM transaksi WHERE idTransaksi=$id");
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="stockpemasok.php">
+            <a class="nav-link" href="addingredient.php">
               <span class="menu-icon">
                 <i class="mdi mdi-package-variant-closed"></i>
               </span>
@@ -86,7 +83,7 @@ $transaksi = read_data("SELECT * FROM transaksi WHERE idTransaksi=$id");
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="detaildelivery.php">
+            <a class="nav-link" href="deliverypemasok.php">
               <span class="menu-icon">
                 <i class="mdi mdi-truck"></i>
               </span>
@@ -201,38 +198,42 @@ $transaksi = read_data("SELECT * FROM transaksi WHERE idTransaksi=$id");
               <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Transaction Details</h4>
+                    <h4 class="card-title">Add Ingredients</h4>
                     <div class="table-responsive">
                       <table class="table">
                         <thead>
                           <tr>
-                            <th>No</th>
-                            <th>Ingredients</th>
-                            <th>Amount/g</th>
-                            <th>Price</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
                           </tr>
                         </thead>
                         <tbody>
-                          <?php $no = 1 ?>
-                          <?php foreach ($dtransaksi as $dtrs) : ?>
-                          <tr>
-                            <td>
-                              <?= $no ?>
-                            </td>
-                            <td>
-                              <?= $dtrs["namaBarang"] ?>
-                            </td>
-                            <td>
-                              <?= $dtrs["jumlahBarang"] * 100; ?>
-                            </td>
-                            <td>
-                              <?= cariHarga($dtrs["idBarang"]) ?>
-                            </td>
-                          </tr>
-                          <?php $no++ ?>
-                          <?php endforeach; ?>
+                        <tr>
+                        <td>Name</td>
+                        <td>Jahe</td>
+                        </tr>
+                        <tr>
+                        <td>Price</td>
+                        <td>Rp 45.000</td>
+                        </tr>
+                        <tr>
+                        <td>Photo</td>
+                        <td>
+                        <form action="proses_upload.php" method="post" enctype="multipart/form-data" >
+                        <div class="form-group">
+                          <label for="foto"></label>
+                          <input type="file" class="form-control-file" id="foto" name="foto" accept="image/*" style="background-color: #ffffff; padding: 5px;">
+                        </div>
+                        </td>
+                        </tr>
                         </tbody>
                       </table>
+                      <footer class="footer">
+                      <div class="d-grid gap-2 d-md-flex justify-content-md-start" >
+                            <button type="submit" class="btn btn-outline-primary btn-icon-text" name="submit"> Submit </button>
+                      </div>
+                      </footer>
                     </div>
                   </div>
                 </div>

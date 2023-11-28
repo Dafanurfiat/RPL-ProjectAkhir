@@ -70,6 +70,14 @@ $transaksi = read_data("SELECT * FROM transaksi WHERE idTransaksi=$id");
             </a>
           </li>
           <li class="nav-item menu-items">
+            <a class="nav-link" href="stockpemasok.php">
+              <span class="menu-icon">
+                <i class="mdi mdi-package-variant-closed"></i>
+              </span>
+              <span class="menu-title">Stock</span>
+            </a>
+          </li>
+          <li class="nav-item menu-items">
             <a class="nav-link" href="transactiondetail.php">
               <span class="menu-icon">
                 <i class="mdi mdi-file-plus"></i>

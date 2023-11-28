@@ -7,10 +7,6 @@ if (!isset($_SESSION['username'])) {
     header("Location: ../../login.php");
     exit(); // Terminate script execution after the redirect
 }
-require "functions.php";
-$id = $_GET["id"];
-$dtransaksi = read_detail_data($id);
-$transaksi = read_data("SELECT * FROM transaksi WHERE idTransaksi=$id");
 ?>
 
 <!DOCTYPE html>
@@ -35,29 +31,29 @@ $transaksi = read_data("SELECT * FROM transaksi WHERE idTransaksi=$id");
   </head>
   <body>
     <div class="container-scroller">
-      <!-- partial:../../partials/_sidebar.html -->
-      <nav class="sidebar sidebar-offcanvas" id="sidebar">
-        <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-            <a class="sidebar-brand brand-logo" href="dashboardpemasok.php" style="color: #659DBD;"><h1>Tenda Biru</h1></a>
-          <a class="sidebar-brand brand-logo-mini" href="dashboardpemasok.php"><img src="../../assets/images/TendaBiru.png" alt="logo" /></a>
-        </div>
-        <ul class="nav">
-          <li class="nav-item profile">
-            <div class="profile-desc">
-              <div class="profile-pic">
-                <div class="count-indicator">
-                  <img class="img-xs rounded-circle " src="../../assets/images/faces/face15.jpg" alt="">
-                  <span class="count bg-success"></span>
-                </div>
-                <div class="profile-name">
-                  <h5 class="mb-0 font-weight-normal"><?php echo $_SESSION['username']; ?></h5>
-                  <span>Pemasok</span>
-                </div>
-              </div>
-              <div class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list" aria-labelledby="profile-dropdown">
-              </div>
+        <!-- partial:partials/_sidebar.html -->
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+            <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
+                <a class="sidebar-brand brand-logo" href="../../dashboardpemasok.php" style="color: #659DBD;"><h1>Tenda Biru</h1></a>
+              <a class="sidebar-brand brand-logo-mini" href="../../dashboardpemasok.php"><img src="../../assets/images/TendaBiru.png" alt="logo" /></a>
             </div>
-          </li>
+            <ul class="nav">
+                <li class="nav-item profile">
+                    <div class="profile-desc">
+                      <div class="profile-pic">
+                        <div class="count-indicator">
+                          <img class="img-xs rounded-circle " src="../../assets/images/faces/face15.jpg" alt="">
+                          <span class="count bg-success"></span>
+                        </div>
+                        <div class="profile-name">
+                          <h5 class="mb-0 font-weight-normal"><?php echo $_SESSION['username']; ?></h5>
+                          <span>Pemasok</span>
+                        </div>
+                      </div>
+                      <div class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list" aria-labelledby="profile-dropdown">
+                      </div>
+                    </div>
+                  </li>
           <li class="nav-item nav-category">
             <span class="nav-link">Navigation</span>
           </li>
@@ -78,7 +74,7 @@ $transaksi = read_data("SELECT * FROM transaksi WHERE idTransaksi=$id");
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="transactiondetail.php">
+            <a class="nav-link" href="transactionpemasok.php">
               <span class="menu-icon">
                 <i class="mdi mdi-file-plus"></i>
               </span>
@@ -86,7 +82,7 @@ $transaksi = read_data("SELECT * FROM transaksi WHERE idTransaksi=$id");
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="detaildelivery.php">
+            <a class="nav-link" href="deliverypemasok.php">
               <span class="menu-icon">
                 <i class="mdi mdi-truck"></i>
               </span>
@@ -100,7 +96,7 @@ $transaksi = read_data("SELECT * FROM transaksi WHERE idTransaksi=$id");
         <!-- partial:../../partials/_navbar.html -->
         <nav class="navbar p-0 fixed-top d-flex flex-row">
           <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
-            <a class="navbar-brand brand-logo-mini" href="dashboardpemasok.php"><img src="../../assets/images/logo-mini.svg" alt="logo" /></a>
+            <a class="navbar-brand brand-logo-mini" href="../../dashboardpemasok.php"><img src="../../assets/images/logo-mini.svg" alt="logo" /></a>
           </div>
           <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
             <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -193,44 +189,51 @@ $transaksi = read_data("SELECT * FROM transaksi WHERE idTransaksi=$id");
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <a class="nav-link" href="#" onclick="goBack()">
-                <button type="button" class="btn btn-outline-danger btn-icon-text"> <i class="mdi mdi-code-less-than" ></i> Back </button>  
-              </a> 
+            <a class="nav-link" href="addingredient.php">
+                <button type="button" class="btn btn-outline-success btn-icon-text"> <i class="mdi mdi-plus" ></i> Add Ingredient </button>  
+              </a>
             </div>
             <div class="row">
               <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Transaction Details</h4>
+                    <h4 class="card-title">List Stock</h4>
                     <div class="table-responsive">
                       <table class="table">
                         <thead>
                           <tr>
-                            <th>No</th>
+                            <th>Picture</th>
                             <th>Ingredients</th>
-                            <th>Amount/g</th>
                             <th>Price</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <?php $no = 1 ?>
-                          <?php foreach ($dtransaksi as $dtrs) : ?>
-                          <tr>
-                            <td>
-                              <?= $no ?>
-                            </td>
-                            <td>
-                              <?= $dtrs["namaBarang"] ?>
-                            </td>
-                            <td>
-                              <?= $dtrs["jumlahBarang"] * 100; ?>
-                            </td>
-                            <td>
-                              <?= cariHarga($dtrs["idBarang"]) ?>
-                            </td>
-                          </tr>
-                          <?php $no++ ?>
-                          <?php endforeach; ?>
+                        <?php
+                        $query = "SELECT * FROM stok";;
+                        $result = mysqli_query($conn, $query);
+                        
+                        $no = 1;
+                        
+                        // Periksa apakah query berhasil dijalankan
+                        if ($result) {
+                            while ($row = mysqli_fetch_assoc($result)) { ?>
+                                <tr>
+                                    <td>
+                                      <img src="../../assets/images/stok/<?= $row['fotoBarang']; ?>" alt="logo" style="width: 50px; height: 50px; " />
+                                    </td>
+                                    <td>
+                                      <?= $row['namaBarang']; ?>
+                                    </td>
+                                    <td>
+                                      <?= $row['stokBarang']; ?>
+                                    </td>
+                                </tr>
+                        <?php
+                          $no++;
+                          }
+                        } else {
+                            echo "Error: " . $query . "<br>" . mysqli_error($conn);
+                        } ?>
                         </tbody>
                       </table>
                     </div>
@@ -260,11 +263,6 @@ $transaksi = read_data("SELECT * FROM transaksi WHERE idTransaksi=$id");
     <script src="../../assets/js/misc.js"></script>
     <script src="../../assets/js/settings.js"></script>
     <script src="../../assets/js/todolist.js"></script>
-    <script>
-    function goBack() {
-        window.history.back();
-    }
-    </script>
     <!-- endinject -->
     <!-- Custom js for this page -->
     <!-- End custom js for this page -->
